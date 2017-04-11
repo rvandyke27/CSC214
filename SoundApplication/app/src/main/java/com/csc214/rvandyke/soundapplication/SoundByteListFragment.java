@@ -9,6 +9,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.List;
 
 /**
  * Rebecca Van Dyke
@@ -32,7 +35,7 @@ public class SoundByteListFragment extends Fragment {
         Log.d(TAG, "onCreate() called");
         setRetainInstance(true);
         mSoundLoader = new SoundLoader(getContext());
-    }
+    } //onCreate()
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,10 +48,60 @@ public class SoundByteListFragment extends Fragment {
         //TODO: adapter
 
         return view;
-    }
+    } //onCreateView()
+
+    private class SoundByteAdapter extends RecyclerView.Adapter<SoundByteHolder> {
+        private List<SoundByte> mSounds;
+
+        public SoundByteAdapter(List<SoundByte> sounds){
+            mSounds = sounds;
+        } //SoundByteAdapter()
+
+        @Override
+        public int getItemCount() {
+            return mSounds.size();
+        } //getItemCount()
+
+        @Override
+        public SoundByteHolder onCreateViewHolder(ViewGroup parent, int viewType){
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+            return new SoundByteHolder(inflater, parent);
+        } //onCreateViewHolder()
+
+        @Override
+        public void onBindViewHolder(SoundByteHolder holder, int position){
+            holder.bind(mSounds.get(position));
+        } //onBindViewHolder()
+
+    } //end class SoundByteAdapter
 
     private class SoundByteHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView mSoundName;
+        private TextView mAlbumName;
+        private TextView mArtistName;
+        private SoundByte mSound;
 
-    }
+        public SoundByteHolder(LayoutInflater inflater, ViewGroup container) {
+            super(inflater.inflate(R.layout.soundbyte_view_holder, container, false));
+
+            mSoundName = (TextView)itemView.findViewById(R.id.tv_sound_name);
+            mAlbumName = (TextView)itemView.findViewById(R.id.tv_album_name);
+            mArtistName = (TextView)itemView.findViewById(R.id.tv_artist);
+
+            itemView.setOnClickListener(this);
+        } //SoundByteHolder()
+
+        public void bind(SoundByte sound){
+            mSound = sound;
+            mSoundName.setText(sound.getName());
+            mAlbumName.setText(sound.getAlbum());
+            mArtistName.setText(sound.getArtist());
+        } //bind()
+
+        @Override
+        public void onClick(View v) {
+            mSoundLoader.play(mSound);
+        } //onClick()
+    } //end class SoundByteHolder
 
 } //end class SoundByteListFragment
