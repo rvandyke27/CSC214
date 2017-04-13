@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/lightPink</item>
+        <item name="colorPrimaryDark">@color/redred</item>
+        <item name="colorAccent">@color/salmonish</item>
+        <item name="android:windowBackground">@color/vlightPink</item>
+        <item name="android:colorBackground">@color/vlightPink</item>
+        <item name="android:textColor">@color/darkGray</item>
+    </style>
+
+</resources>

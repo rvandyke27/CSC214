@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements SoundByteListFrag
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Log.d(TAG, "onCreate() called");
+
         mSongName = (TextView)findViewById(R.id.text_view_sound_name);
 
         FragmentManager manager = getSupportFragmentManager();
@@ -38,6 +40,13 @@ public class MainActivity extends AppCompatActivity implements SoundByteListFrag
 
     public void updateView(String message){
         mSongName.setText(message);
+        Log.d(TAG, "updateView() called");
     } //updateView
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        Log.d(TAG, "onDestroy() called");
+    } //onDestroy()
 
 } //end class MainActivity

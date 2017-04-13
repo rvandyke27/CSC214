@@ -82,6 +82,7 @@ public class SoundByteListFragment extends Fragment {
         @Override
         public void onBindViewHolder(SoundByteHolder holder, int position){
             holder.bind(mSounds.get(position));
+            Log.d(TAG, "bound item at position " + position);
         } //onBindViewHolder()
 
     } //end class SoundByteAdapter

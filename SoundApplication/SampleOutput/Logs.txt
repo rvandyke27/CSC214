@@ -1,0 +1,151 @@
+04-12 23:44:41.990 2526-2526/? D/MainActivity: onCreate() called
+04-12 23:44:42.011 2526-2526/? D/TrackListFragment: onCreate() called
+04-12 23:44:42.016 2526-2526/? D/SoundLoader: loaded track mus_bergentruckung.ogg
+04-12 23:44:42.017 2526-2526/? D/SoundLoader: loaded track mus_coretransition.ogg
+04-12 23:44:42.017 2526-2526/? D/SoundLoader: loaded track mus_dance_of_dog.ogg
+04-12 23:44:42.017 2526-2526/? D/SoundLoader: loaded track mus_dogappear.ogg
+04-12 23:44:42.017 2526-2526/? D/SoundLoader: loaded track mus_dogmeander.ogg
+04-12 23:44:42.018 2526-2526/? D/SoundLoader: loaded track mus_dogsong.ogg
+04-12 23:44:42.018 2526-2526/? D/SoundLoader: loaded track mus_f_6s_1.ogg
+04-12 23:44:42.019 2526-2526/? D/SoundLoader: loaded track mus_f_6s_6.ogg
+04-12 23:44:42.019 2526-2526/? D/SoundLoader: loaded track mus_f_finale_1.ogg
+04-12 23:44:42.019 2526-2526/? D/SoundLoader: loaded track mus_flowey.ogg
+04-12 23:44:42.019 2526-2526/? D/SoundLoader: loaded track mus_mettmusical1.ogg
+04-12 23:44:42.020 2526-2526/? D/SoundLoader: loaded track mus_mettmusical3.ogg
+04-12 23:44:42.020 2526-2526/? D/SoundLoader: loaded track mus_napstahouse.ogg
+04-12 23:44:42.020 2526-2526/? D/SoundLoader: loaded track mus_options_winter.ogg
+04-12 23:44:42.020 2526-2526/? D/SoundLoader: loaded track mus_prebattle1.ogg
+04-12 23:44:42.020 2526-2526/? D/SoundLoader: loaded track mus_sfx_hypergoner_charge.ogg
+04-12 23:44:42.020 2526-2526/? D/SoundLoader: loaded track mus_tv.ogg
+04-12 23:44:42.020 2526-2526/? D/SoundLoader: loaded track mus_undynepiano.ogg
+04-12 23:44:42.020 2526-2526/? D/SoundLoader: loaded track mus_wrongnumbersong.ogg
+04-12 23:44:42.020 2526-2526/? D/SoundLoader: loaded track mus_x_undyne_pre.ogg
+04-12 23:44:42.021 2526-2526/? D/SoundLoader: loaded track snd_mushroomdance.ogg
+04-12 23:44:42.021 2526-2526/? D/SoundLoader: loaded 21 sound files
+04-12 23:44:42.026 2526-2526/? D/TrackListFragment: onCreateview() called
+04-12 23:44:42.430 2526-2526/? D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:44:42.430 2526-2526/? D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:44:42.432 2526-2526/? D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:44:42.438 2526-2526/? D/TrackListFragment: bound item at position 0
+04-12 23:44:42.439 2526-2526/? D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:44:42.440 2526-2526/? D/TrackListFragment: bound item at position 1
+04-12 23:44:42.441 2526-2526/? D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:44:42.444 2526-2526/? D/TrackListFragment: bound item at position 2
+04-12 23:44:42.445 2526-2526/? D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:44:42.447 2526-2526/? D/TrackListFragment: bound item at position 3
+04-12 23:44:42.449 2526-2526/? D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:44:42.450 2526-2526/? D/TrackListFragment: bound item at position 4
+04-12 23:44:42.451 2526-2526/? D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:44:42.452 2526-2526/? D/TrackListFragment: bound item at position 5
+04-12 23:44:42.453 2526-2526/? D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:44:42.454 2526-2526/? D/TrackListFragment: bound item at position 6
+04-12 23:44:42.455 2526-2526/? D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:44:42.456 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: bound item at position 7
+04-12 23:45:40.856 2526-2526/com.csc214.rvandyke.soundapplication D/MainActivity: onDestroy() called
+04-12 23:45:40.891 2526-2526/com.csc214.rvandyke.soundapplication D/MainActivity: onCreate() called
+04-12 23:45:40.891 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: onCreateview() called
+04-12 23:45:40.898 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:40.898 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:40.898 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:40.900 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: bound item at position 0
+04-12 23:45:40.900 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:40.901 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: bound item at position 1
+04-12 23:45:40.902 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:40.904 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: bound item at position 2
+04-12 23:45:40.904 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:40.905 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: bound item at position 3
+04-12 23:45:40.906 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:40.906 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:40.907 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:40.907 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:40.907 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:41.095 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:41.097 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:41.097 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:41.097 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:41.097 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:41.097 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:41.098 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:41.098 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:41.098 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:41.098 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:41.098 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:41.099 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:41.099 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:41.099 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:41.099 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:41.099 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:41.101 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: bound item at position 4
+04-12 23:45:42.877 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:42.883 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: bound item at position 5
+04-12 23:45:42.910 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:42.926 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:42.959 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:42.959 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:42.975 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:42.998 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:43.019 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:43.040 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:43.061 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:43.083 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:43.103 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:43.128 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:43.149 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:45:43.682 2526-2526/com.csc214.rvandyke.soundapplication D/MainActivity: updateView() called
+04-12 23:47:03.698 2526-2526/com.csc214.rvandyke.soundapplication D/MainActivity: updateView() called
+04-12 23:47:06.161 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.162 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: bound item at position 6
+04-12 23:47:06.178 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.193 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.197 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.199 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: bound item at position 7
+04-12 23:47:06.211 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.230 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.250 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.269 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.290 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.311 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.312 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.332 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.353 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.385 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.409 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.434 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.455 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.478 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.495 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.511 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.533 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.555 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.576 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.597 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.599 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: bound item at position 8
+04-12 23:47:06.600 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.622 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.646 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.672 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.693 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:06.717 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.360 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.360 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: bound item at position 9
+04-12 23:47:07.377 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.394 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.412 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.426 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.428 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.428 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: bound item at position 10
+04-12 23:47:07.445 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.479 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.495 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.520 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.529 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.550 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.585 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.607 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.617 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.652 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.674 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:07.684 2526-2526/com.csc214.rvandyke.soundapplication D/TrackListFragment: getItemCount() called with 21 items
+04-12 23:47:10.623 2526-2526/com.csc214.rvandyke.soundapplication D/MainActivity: updateView() called
+
+Note: I'm not sure why getItemCount() gets called so many times, but everything works fine...
