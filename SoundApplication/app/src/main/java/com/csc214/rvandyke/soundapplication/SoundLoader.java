@@ -36,8 +36,9 @@ public class SoundLoader {
             trackNames = mAssets.list(AUDIO_FILE_FOLDER);
             int i = 1;
             for(String filename : trackNames){
+                Log.d(TAG, "loaded track " + filename);
                 String path = AUDIO_FILE_FOLDER + "/" + filename;
-                SoundByte sound = new SoundByte(path, "SoundByte " + i, "By the Numbers", "Bobby");
+                SoundByte sound = new SoundByte(path, "Track " + i, "UnderTale", "Toby Fox");
                 mSounds.add(sound);
 
                 try{
@@ -48,11 +49,14 @@ public class SoundLoader {
                 catch(IOException e) {
                     Log.e(TAG, "load sound file failed", e);
                 }
+                i++;
             }
         }
         catch(IOException e){
             Log.e(TAG, "load sound file failed", e);
         }
+
+        Log.d(TAG, "loaded " + mSounds.size() + " sound files");
     } //SoundLoader()
 
     public void play(SoundByte sound){

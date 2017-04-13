@@ -1,6 +1,8 @@
 package com.csc214.rvandyke.soundapplication;
 
 
+import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -23,11 +26,16 @@ import java.util.List;
 public class SoundByteListFragment extends Fragment {
     private static final String TAG = "TrackListFragment";
 
+    public interface onSoundChangedListener {
+        public void updateView(String s);
+    }
+
     private SoundLoader mSoundLoader;
+    private onSoundChangedListener listener;
 
     public SoundByteListFragment() {
         // Required empty public constructor
-    }
+    } //SoundByteListFragment()
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -43,9 +51,11 @@ public class SoundByteListFragment extends Fragment {
         Log.d(TAG, "onCreateview() called");
         View view = inflater.inflate(R.layout.fragment_soundbyte_list, container, false);
 
+        listener = (onSoundChangedListener)getActivity();
+
         RecyclerView soundRecycler = (RecyclerView)view.findViewById(R.id.soundbyte_recycler);
         soundRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        //TODO: adapter
+        soundRecycler.setAdapter(new SoundByteAdapter(mSoundLoader.getSounds()));
 
         return view;
     } //onCreateView()
@@ -59,6 +69,7 @@ public class SoundByteListFragment extends Fragment {
 
         @Override
         public int getItemCount() {
+            Log.d(TAG, "getItemCount() called with " + mSounds.size() + " items");
             return mSounds.size();
         } //getItemCount()
 
@@ -101,6 +112,13 @@ public class SoundByteListFragment extends Fragment {
         @Override
         public void onClick(View v) {
             mSoundLoader.play(mSound);
+            int orientation = getActivity().getResources().getConfiguration().orientation;
+            if(orientation == Configuration.ORIENTATION_PORTRAIT) {
+                Toast.makeText(getContext(), "Playing " + mSound.getName() + "!", Toast.LENGTH_LONG).show();
+            }
+            else{
+               listener.updateView("Now Playing " + mSound.getName());
+            }
         } //onClick()
     } //end class SoundByteHolder
 
