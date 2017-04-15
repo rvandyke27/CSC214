@@ -3,7 +3,7 @@ package com.csc214.rvandyke.assignment6application;
 /**
  * Rebecca Van Dyke
  * rvandyke@u.rochester.edu
- * CSC 214 Assignment 6
+ * CSC 214 Assignment 8.5
  * TA:Julian Weiss
  */
 
@@ -28,6 +28,7 @@ import java.util.List;
 
 public class TeamListFragment extends ListFragment {
     private static final String TAG="RvandykeAssignment6";
+
     private List<BhangraTeam> mTeams;
 
     public TeamListFragment() {
@@ -41,7 +42,7 @@ public class TeamListFragment extends ListFragment {
         getActivity().setTitle("Active Bhangra Teams");
         mTeams = Roster.get(getActivity()).getRoster();
 
-        ArrayAdapter<BhangraTeam> adapter = new ArrayAdapter<>(getActivity(), R.layout.view_team, mTeams);
+        ArrayAdapter<BhangraTeam> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, mTeams);
         setListAdapter(adapter);
     }
 
