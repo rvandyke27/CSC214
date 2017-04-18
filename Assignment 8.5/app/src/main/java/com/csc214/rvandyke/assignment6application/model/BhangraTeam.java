@@ -8,7 +8,7 @@ import java.util.UUID;
 /**
  * Rebecca Van Dyke
  * rvandyke@u.rochester.edu
- * CSC 214 Assignment 6
+ * CSC 214 Assignment 8.5
  * TA:Julian Weiss
  */
 
@@ -25,7 +25,7 @@ public class BhangraTeam implements Comparable<BhangraTeam>{
         mDateFounded = founding;
         mDescription = description;
         mId = UUID.randomUUID();
-    }
+    } //BhangraTeam()
 
     public String getName(){
         return mName;
@@ -50,7 +50,7 @@ public class BhangraTeam implements Comparable<BhangraTeam>{
     @Override
     public String toString(){
         return getName() + ", founded in " + getDateFounded() + " in " + getTown();
-    }
+    } //toString()
 
     @Override
     public int compareTo(@NonNull BhangraTeam o) {
@@ -63,5 +63,6 @@ public class BhangraTeam implements Comparable<BhangraTeam>{
         else{
             return 1;
         }
-    }
-} //end class
+    } //compareTo()
+
+} //end class BhangraTeam

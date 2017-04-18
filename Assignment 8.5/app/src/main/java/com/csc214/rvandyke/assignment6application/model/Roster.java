@@ -12,7 +12,7 @@ import java.util.UUID;
 /**
  * Rebecca Van Dyke
  * rvandyke@u.rochester.edu
- * CSC 214 Assignment 6
+ * CSC 214 Assignment 8.5
  * TA:Julian Weiss
  */
 
@@ -45,21 +45,21 @@ public class Roster {
         addTeam("Cal Bhangra", "Berkeley, CA", "Cal Bhangra was formed to promote awareness of the Punjabi Culture at UC Berkeley through the expression of traditional, folk Punjabi dance. By creating a group full of young, passionate Berkeley students, Cal Bhangra hopes to keep Bhangra alive at Cal.", 2010);
         addTeam("CMU Bhangra", "Pittsburgh, PA", "The purpose of CMU Bhangra is to provide opportunity and instruction for aspiring dancers. We seek to encourage, advance, and promote the art of Bhangra dancing (Punjabi folk dance) through various performances and competitions, on and off campus, and through instructive workshops.", 2010);
         addTeam("Columbia University Bhangra", "New York, NY", "Established in 2002, Columbia Bhangra is a competitive collegiate team that dances Bhangra- a dance form native to Punjab, India. By combining traditional and contemporary choreography and music, the team has been able to achieve an iconic style and energy. CU Bhangra has been an active force within the Bhangra circuit and Columbia community for many years, primarily due to its commitment to create fun and entertaining routines that foster an appreciation for Bhangra in both its dancers and audiences alike.", 2002);
-    }
+    } //Roster()
 
     public static Roster get(Context c){
         if(sRoster == null){
             sRoster = new Roster(c);
         }
         return sRoster;
-    }
+    } //get()
 
     public ArrayList<BhangraTeam> getRoster(){
         ArrayList<BhangraTeam> teams = new ArrayList<>(roster.size());
         teams.addAll(roster.values());
         Collections.sort(teams);
         return teams;
-    }
+    } //getRoster()
 
     public BhangraTeam getTeam(UUID id){
         return roster.get(id);
@@ -68,5 +68,5 @@ public class Roster {
     private void addTeam(String name, String town, String description, int founding){
         BhangraTeam team = new BhangraTeam(name, town, description, founding);
         roster.put(team.getId(), team);
-    }
-}
+    } //getTeam()
+} //end class Roster

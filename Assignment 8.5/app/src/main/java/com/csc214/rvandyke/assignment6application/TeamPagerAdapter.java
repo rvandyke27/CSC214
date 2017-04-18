@@ -31,4 +31,4 @@ public class TeamPagerAdapter extends FragmentStatePagerAdapter {
         return mFragments.size();
     } //getCount()
 
-} //end class
+} //end class TeamPagerAdapter

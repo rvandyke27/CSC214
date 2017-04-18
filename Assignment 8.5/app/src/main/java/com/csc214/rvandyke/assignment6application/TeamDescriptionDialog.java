@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,12 @@ import org.w3c.dom.Text;
 /**
  * Rebecca Van Dyke
  * rvandyke@u.rochester.edu
- * CSC 214 Assignment 6
+ * CSC 214 Assignment 8.5
  * TA:Julian Weiss
  */
 
 public class TeamDescriptionDialog extends DialogFragment {
+    private static final String TAG = "TeamDescriptionDialog";
     private static final String ARG_NAME = "ARG_NAME";
     private static final String ARG_YEAR = "ARG_YEAR";
     private static final String ARG_CITY = "ARG_CITY";
@@ -37,6 +39,7 @@ public class TeamDescriptionDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_team_description_dialog, null);
+        Log.d(TAG, "onCreateDialog called");
 
         Bundle args = getArguments();
         String teamName = args.getString(ARG_NAME);
@@ -67,6 +70,6 @@ public class TeamDescriptionDialog extends DialogFragment {
         args.putString(ARG_DESCRIPTION, team.getDescription());
         dialog.setArguments(args);
         return dialog;
-    }
+    } //newInstance()
 
-}
+} //end class TeamDescriptionDialog

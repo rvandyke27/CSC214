@@ -1,0 +1,63 @@
+04-17 23:12:08.250 13545-13545/? D/RvandykeAssignment6: MainActivity created
+04-17 23:12:08.307 13545-13545/? D/RvandykeAssignment6: TeamListFragment created
+04-17 23:12:08.341 13545-13545/? D/TeamRecyclerFragment: onCreateView called
+04-17 23:12:08.415 13545-13561/? I/OpenGLRenderer: Initialized EGL, version 1.4
+04-17 23:12:08.415 13545-13561/? D/OpenGLRenderer: Swap behavior 1
+04-17 23:12:08.416 13545-13561/? W/OpenGLRenderer: Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+04-17 23:12:08.416 13545-13561/? D/OpenGLRenderer: Swap behavior 0
+04-17 23:12:08.583 13545-13545/? D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:08.583 13545-13545/? D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:08.586 13545-13545/? D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:08.590 13545-13545/? D/TeamRecyclerFragment: team at position 0 bound
+04-17 23:12:08.592 13545-13545/? D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:08.593 13545-13545/? D/TeamRecyclerFragment: team at position 1 bound
+04-17 23:12:08.594 13545-13545/? D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:08.595 13545-13545/? D/TeamRecyclerFragment: team at position 2 bound
+04-17 23:12:08.595 13545-13545/? D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:08.596 13545-13545/? D/TeamRecyclerFragment: team at position 3 bound
+04-17 23:12:08.597 13545-13545/? D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:08.597 13545-13545/? D/TeamRecyclerFragment: team at position 4 bound
+04-17 23:12:08.598 13545-13545/? D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:08.598 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: team at position 5 bound
+04-17 23:12:08.599 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:08.599 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: team at position 6 bound
+04-17 23:12:24.120 13545-13545/com.csc214.rvandyke.assignment6application D/RvandykeAssignment6: list item clicked
+04-17 23:12:24.130 13545-13545/com.csc214.rvandyke.assignment6application D/TeamDescriptionDialog: onCreateDialog called
+04-17 23:12:27.776 13545-13545/com.csc214.rvandyke.assignment6application D/RvandykeAssignment6: list item clicked
+04-17 23:12:27.791 13545-13545/com.csc214.rvandyke.assignment6application D/TeamDescriptionDialog: onCreateDialog called
+04-17 23:12:31.154 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.156 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: team at position 7 bound
+04-17 23:12:31.158 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.159 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: team at position 8 bound
+04-17 23:12:31.171 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.190 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.208 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.222 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.241 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.258 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.278 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.288 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.300 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.321 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.343 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.364 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.386 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.407 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.430 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.430 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: team at position 9 bound
+04-17 23:12:31.431 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.451 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.472 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.493 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.513 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.533 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.556 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.576 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.579 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: team at position 10 bound
+04-17 23:12:31.598 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.620 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:31.641 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: getItemCount called
+04-17 23:12:32.660 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: onClick called
+04-17 23:12:32.662 13545-13545/com.csc214.rvandyke.assignment6application D/TeamDescriptionDialog: onCreateDialog called
+04-17 23:12:34.460 13545-13545/com.csc214.rvandyke.assignment6application D/TeamRecyclerFragment: onClick called
+04-17 23:12:34.462 13545-13545/com.csc214.rvandyke.assignment6application D/TeamDescriptionDialog: onCreateDialog called

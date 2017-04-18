@@ -38,7 +38,7 @@ public class TeamRecyclerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_team_recycler, container, false);
-
+        Log.d(TAG, "onCreateView called");
         mRecyclerView = (RecyclerView)view.findViewById(R.id.team_list_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -46,6 +46,12 @@ public class TeamRecyclerFragment extends Fragment {
         mRecyclerView.setAdapter(adapter);
         return view;
     } //onCreateView()
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        Log.d(TAG, "TeamListFragment destroyed");
+    } //onDestroy()
 
     private class TeamAdapter extends RecyclerView.Adapter<TeamViewHolder>{
         private List<BhangraTeam> mTeams;
@@ -63,16 +69,18 @@ public class TeamRecyclerFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(TeamViewHolder holder, int position){
+            Log.d(TAG, "team at position " + position + " bound");
             holder.bindTeam(mTeams.get(position));
         } //onBindViewHolder()
 
         @Override
         public int getItemCount(){
+            Log.d(TAG, "getItemCount called");
             return mTeams.size();
         } //getItemCount()
     } //end class TeamAdapter
 
-    private class TeamViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    private class TeamViewHolder extends RecyclerView.ViewHolder{
         private TextView mTeamName;
         private TextView mTeamDetails;
         private BhangraTeam mTeam;
@@ -81,6 +89,17 @@ public class TeamRecyclerFragment extends Fragment {
             super(view);
             mTeamName = (TextView)view.findViewById(R.id.tv_team_name);
             mTeamDetails = (TextView)view.findViewById(R.id.tv_team_details);
+
+            view.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    FragmentManager manager = getFragmentManager();
+                    TeamDescriptionDialog dialog = TeamDescriptionDialog.newInstance(mTeam);
+
+                    Log.d(TAG, "onClick called");
+                    dialog.show(manager, "TeamDetail");
+                }
+            });
         } //TeamViewHolder()
 
         public void bindTeam(BhangraTeam team){
@@ -89,14 +108,7 @@ public class TeamRecyclerFragment extends Fragment {
             mTeam = team;
         } //bindTeam()
 
-        @Override
-        public void onClick(View v){
-            FragmentManager manager = getFragmentManager();
-            TeamDescriptionDialog dialog = TeamDescriptionDialog.newInstance(mTeam);
 
-            Log.d(TAG, "onClick called");
-            dialog.show(manager, "TeamDetail");
-        }
     } //end class TeamViewHolder
 
 } //end clas TeamRecyclerFragment

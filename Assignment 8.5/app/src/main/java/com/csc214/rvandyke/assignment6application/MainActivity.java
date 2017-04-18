@@ -41,5 +41,5 @@ public class MainActivity extends AppCompatActivity {
         TeamPagerAdapter adapter = new TeamPagerAdapter(manager, fragments);
 
         mViewPager.setAdapter(adapter);
-    }
-}
+    } //onCreate
+} //end class MainActivity
