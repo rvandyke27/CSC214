@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MultithreadedApplication</string>
+    <string name="fetch_image">Fetch Image</string>
+    <string name="enter_url_here">Enter URL here...</string>
+</resources>
