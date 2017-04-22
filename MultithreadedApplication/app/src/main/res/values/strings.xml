@@ -2,4 +2,7 @@
     <string name="app_name">MultithreadedApplication</string>
     <string name="fetch_image">Fetch Image</string>
     <string name="enter_url_here">Enter URL here...</string>
+    <string name="calculatesqrt">CalculateSqrt doInBackground called</string>
+    <string name="sqrt">Square root =</string>
+    <string name="largestPrime">Largest Prime =</string>
 </resources>
