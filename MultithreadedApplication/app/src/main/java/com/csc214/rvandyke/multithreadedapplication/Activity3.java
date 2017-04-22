@@ -1,5 +1,6 @@
 package com.csc214.rvandyke.multithreadedapplication;
 
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /*
 Rebecca Van Dyke
@@ -21,6 +23,9 @@ public class Activity3 extends AppCompatActivity {
     private EditText mLongInput;
     private TextView mOutput;
 
+    private SqrtHandlerThread mSqrtHandler;
+    private PrimeNumberHandlerThread mPrimeHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,12 +35,49 @@ public class Activity3 extends AppCompatActivity {
         mLongInput = (EditText)findViewById(R.id.edit_text_long_input);
         mOutput = (TextView)findViewById(R.id.text_view_output);
 
+        Handler responseHandler = new Handler();
+
+        mSqrtHandler = new SqrtHandlerThread(responseHandler);
+        mSqrtHandler.setSqrtProgressListener(new SqrtHandlerThread.SqrtProgressListener() {
+            @Override
+            public void jobComplete(String message) {
+                if(!message.equals("")){
+                    mOutput.setText(getString(R.string.sqrt) + message);
+                    Toast.makeText(getApplicationContext(), getString(R.string.sqrt) + message, Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Invalid input!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        mSqrtHandler.start();
+        mSqrtHandler.getLooper();
+        Log.d(TAG, "Started Sqrt handler");
+
+        mPrimeHandler = new PrimeNumberHandlerThread(responseHandler);
+        mPrimeHandler.setPrimeProgressListener(new PrimeNumberHandlerThread.PrimeProgressListener() {
+            @Override
+            public void jobComplete(String message) {
+                if(!message.equals("")){
+                    mOutput.setText("Largest Prime = " + message);
+                    Toast.makeText(getApplicationContext(), "Largest Prime = " + message, Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Invalid input!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        mPrimeHandler.start();
+        mPrimeHandler.getLooper();
+        Log.d(TAG, "Started prime handler");
+
+
         Button sqrtButton = (Button)findViewById(R.id.button_calculate_sqrt);
         sqrtButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Log.d(TAG, "Square Root Requested");
-                //TODO
+                mSqrtHandler.calculateSqrt(mLongInput.getText().toString());
             }
         });
 
@@ -44,7 +86,7 @@ public class Activity3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Largest Prime Requested");
-                //TODO
+                mPrimeHandler.calculatePrime(mLongInput.getText().toString());
             }
         });
     } //onCreate()

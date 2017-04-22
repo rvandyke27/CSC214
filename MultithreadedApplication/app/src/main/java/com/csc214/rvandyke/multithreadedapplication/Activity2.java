@@ -82,6 +82,7 @@ public class Activity2 extends AppCompatActivity {
         protected void onPostExecute(String s){
             if(!s.equals("")) {
                 mOutput.setText(getString(R.string.sqrt) + s);
+                Toast.makeText(getApplicationContext(), getString(R.string.sqrt) + s, Toast.LENGTH_LONG).show();
             }
             else{
                 Toast.makeText(getApplicationContext(), "Invalid input!", Toast.LENGTH_LONG).show();
@@ -118,6 +119,7 @@ public class Activity2 extends AppCompatActivity {
         protected void onPostExecute(String s){
             if(!s.equals("")) {
                 mOutput.setText(getString(R.string.largestPrime) + s);
+                Toast.makeText(getApplicationContext(), getString(R.string.largestPrime) + s, Toast.LENGTH_LONG).show();
             }
             else{
                 Toast.makeText(getApplicationContext(), "Invalid input!", Toast.LENGTH_LONG).show();
@@ -125,7 +127,7 @@ public class Activity2 extends AppCompatActivity {
         } //onPostExecute()
     } //end class findPrime
 
-    public boolean isPrime(long n){
+    public static boolean isPrime(long n){
         if(n%2 == 0){
             return false;
         }
