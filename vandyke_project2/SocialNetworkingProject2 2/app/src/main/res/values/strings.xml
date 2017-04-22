@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">SocialNetworkingProject2</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login_error">Incorrect Login Credentials</string>
+    <string name="email_error">Email already used or invalid</string>
+    <string name="write_post">Write Post</string>
+    <string name="edit_my_profile">Edit My Profile</string>
+    <string name="view_my_profile">View My Profile</string>
+    <string name="view_all_users">View All Users</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="subtitle_write_post">Write Post</string>
+    <string name="subtitle_user_list">User List</string>
+    <string name="subtitle_edit_profile">Edit Profile</string>
+    <string name="subtitle_main_feed">Main Feed</string>
+    <string name="home">Home</string>
+    <string name="create_account_error">Credentials invalid or already used</string>
+</resources>
