@@ -10,4 +10,6 @@ The purpose of this assignment was to practice using Asynctasks, Handlers, Handl
 
 2. In contrast to part 1, each HandlerThread represents its own thread so when calculating the largest prime for a very large number, the square root can be calculated more quickly in its own parallel thread. While the largest prime is being calculated, the square root will display in a toast (almost immediately) and in the textview until the largest prime is calculated.
 
+3. I chose to use AsyncTask to fetch the image because it is easier and the additional functionality of HandlerThreads is not needed for this specific activity. Only one thread would be used anyway, so the additional effort needed to set up a HandlerThread would be for nothing.
+
 I would like my implementation of hierarchical navigation to be considered for extra credit.

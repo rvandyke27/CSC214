@@ -21,6 +21,8 @@ TA:Julian Weiss
 
 public class Activity2 extends AppCompatActivity {
     private static final String TAG = "Activity2";
+    private CalculateSqrt mSqrt;
+    private FindPrime mPrime;
 
     private EditText mLongInput;
     private TextView mOutput;
@@ -33,13 +35,16 @@ public class Activity2 extends AppCompatActivity {
 
         mLongInput = (EditText)findViewById(R.id.edit_text_long_input);
         mOutput = (TextView)findViewById(R.id.text_view_output);
+        mSqrt = new CalculateSqrt();
+        mPrime = new FindPrime();
 
         Button sqrtButton = (Button)findViewById(R.id.button_calculate_sqrt);
         sqrtButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Log.d(TAG, "Square Root Requested");
-                new CalculateSqrt().execute(mLongInput.getText().toString());
+                mSqrt.execute(mLongInput.getText().toString());
+                mSqrt = new CalculateSqrt();
             }
         });
 
@@ -48,11 +53,20 @@ public class Activity2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "Largest Prime Requested");
-                new findPrime().execute(mLongInput.getText().toString());
+                mPrime.execute(mLongInput.getText().toString());
+                mPrime = new FindPrime();
             }
         });
 
     } //onCreate()
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        Log.d(TAG, "onStop called");
+        mPrime.cancel(true);
+        mSqrt.cancel(true);
+    }
 
     @Override
     public void onDestroy(){
@@ -91,7 +105,7 @@ public class Activity2 extends AppCompatActivity {
 
     } //end class CalculateSqrt
 
-    private class findPrime extends AsyncTask<String, Void, String>{
+    private class FindPrime extends AsyncTask<String, Void, String>{
         @Override
         protected String doInBackground(String... params){
             long output = 0;

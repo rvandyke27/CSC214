@@ -1,0 +1,33 @@
+04-23 18:33:18.286 5778-5778/com.csc214.rvandyke.multithreadedapplication D/MainActivity: onCreate called
+04-23 18:33:20.976 5778-5778/com.csc214.rvandyke.multithreadedapplication D/MainActivity: launched Activity2 from MainActivity
+04-23 18:33:21.048 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity2: onCreate called
+04-23 18:33:24.600 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity2: Largest Prime Requested
+04-23 18:33:28.799 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity2: Square Root Requested
+04-23 18:33:28.800 5778-5858/com.csc214.rvandyke.multithreadedapplication D/Activity2: CalculateSqrt doInBackground called
+04-23 18:34:00.958 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity2: Largest Prime Requested
+04-23 18:34:27.060 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity2: Largest Prime Requested
+04-23 18:34:29.439 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity2: Square Root Requested
+04-23 18:34:30.990 5778-6412/com.csc214.rvandyke.multithreadedapplication D/Activity2: CalculateSqrt doInBackground called
+04-23 18:34:41.711 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity2: onStop called
+04-23 18:34:41.712 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity2: onDestroy called
+04-23 18:34:42.939 5778-5778/com.csc214.rvandyke.multithreadedapplication D/MainActivity: launched Activity3 from MainActivity
+04-23 18:34:42.979 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity3: onCreate called
+04-23 18:34:42.987 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity3: Started Sqrt handler
+04-23 18:34:42.988 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity3: Started prime handler
+04-23 18:34:47.548 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity3: Largest Prime Requested
+04-23 18:34:52.532 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity3: Square Root Requested
+04-23 18:35:02.019 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity3: onDestroy called
+04-23 18:35:03.725 5778-5778/com.csc214.rvandyke.multithreadedapplication D/MainActivity: launched Activity3 from MainActivity
+04-23 18:35:03.770 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity3: onCreate called
+04-23 18:35:03.788 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity3: Started Sqrt handler
+04-23 18:35:03.792 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity3: Started prime handler
+04-23 18:35:09.913 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity3: Largest Prime Requested
+04-23 18:35:13.460 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity3: Largest Prime Requested
+04-23 18:35:21.733 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity3: Largest Prime Requested
+04-23 18:35:23.306 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity3: Square Root Requested
+04-23 18:35:57.314 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity3: onDestroy called
+04-23 18:36:00.347 5778-5778/com.csc214.rvandyke.multithreadedapplication D/MainActivity: launched Activity4 from MainActivity
+04-23 18:36:00.368 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity4: onCreate called
+04-23 18:36:35.883 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity4: Fetch Image Requested
+04-23 18:37:10.322 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity4: onStop called
+04-23 18:37:10.323 5778-5778/com.csc214.rvandyke.multithreadedapplication D/Activity4: onDestroy called

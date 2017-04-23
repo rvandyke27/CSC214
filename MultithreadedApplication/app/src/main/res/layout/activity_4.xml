@@ -14,11 +14,13 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_gravity="center"
             android:id="@+id/imageview_display"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            android:src="@mipmap/default_image"
+            android:scaleType="fitCenter"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -27,7 +29,8 @@
             android:inputType="textUri"
             android:id="@+id/edittext_url"
             android:layout_margin="5dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:text="https://rochesterymca.org/wp-content/uploads/2017/01/University_of_Rochester_logo.png"/>
 
         <Button
             android:layout_width="wrap_content"
