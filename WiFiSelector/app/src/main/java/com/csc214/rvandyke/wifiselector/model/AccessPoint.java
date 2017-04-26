@@ -19,6 +19,7 @@ public class AccessPoint implements Comparable<AccessPoint>{
     private String mNickname;
     private int mSignalLevel;
     private String mNotes;
+    private boolean mFavorited;
 
     public AccessPoint(ScanResult scan){
         mBSSID = scan.BSSID;
@@ -30,6 +31,7 @@ public class AccessPoint implements Comparable<AccessPoint>{
             mNickname = mBSSID;
         }
         mSignalLevel = scan.level;
+        mFavorited = false;
     } //AccessPoint()
 
     public AccessPoint(String bssid, String ssid, String nickname, String notes){
@@ -45,6 +47,14 @@ public class AccessPoint implements Comparable<AccessPoint>{
         return mSignalLevel - other.getSignalLevel();
     } //compareTo()
 
+    public boolean isFavorited(){
+        return mFavorited;
+    }
+
+    public void setFavorited(boolean favorited){
+        mFavorited = favorited;
+    }
+
     public String getBSSID(){
         return mBSSID;
     } //getBSSID
@@ -59,7 +69,7 @@ public class AccessPoint implements Comparable<AccessPoint>{
 
     public String getNotes(){
         return mNotes;
-    }
+    } //getNotes()
 
     public int getSignalLevel(){
         return mSignalLevel;

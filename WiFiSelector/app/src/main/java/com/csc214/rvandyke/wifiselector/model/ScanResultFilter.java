@@ -19,13 +19,13 @@ public class ScanResultFilter {
 
     private WifiManager mWifiManager;
     private List<AccessPoint> mAPList;
-    private List<AccessPoint> mFavoritedAP;
+    private FavoriteAPList mFavoritedAP;
     private String mSSID;
 
     public ScanResultFilter(WifiManager wifiManager, String SSID, Context c){
         mWifiManager = wifiManager;
         mSSID = SSID;
-        mFavoritedAP = FavoriteAPList.get(c.getApplicationContext()).getFavoritedAPs();
+        mFavoritedAP = FavoriteAPList.get(c.getApplicationContext());
         updateScan();
     } //ScanResultFilter()
 
