@@ -18,34 +18,40 @@ public class ScanResultFilter {
     private static final String TAG = "ScanResultFilter";
 
     private WifiManager mWifiManager;
-    private List<ScanResult> mAPList;
+    private List<AccessPoint> mAPList;
+    private List<AccessPoint> mFavoritedAP;
     private String mSSID;
 
-    public ScanResultFilter(Context c, String SSID){
-        mWifiManager = (WifiManager)c.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+    public ScanResultFilter(WifiManager wifiManager, String SSID, Context c){
+        mWifiManager = wifiManager;
         mSSID = SSID;
+        mFavoritedAP = FavoriteAPList.get(c.getApplicationContext()).getFavoritedAPs();
         updateScan();
     } //ScanResultFilter()
 
     public void updateScan(){
         ArrayList<ScanResult> unfiltered = (ArrayList)mWifiManager.getScanResults();
-        mAPList = new ArrayList<ScanResult>();
+        mAPList = new ArrayList<AccessPoint>();
         for(ScanResult s: unfiltered){
             if(s.SSID.equals(mSSID)){
-                mAPList.add(s);
+                AccessPoint temp = new AccessPoint(s);
+                if(mFavoritedAP.contains(s.BSSID)){
+                    temp.setFavorited(true);
+                }
+                mAPList.add(temp);
             }
         }
     } //updateScan()
 
-    public List<ScanResult> getAccessPoints(){
+    public List<AccessPoint> getAccessPoints(){
         return mAPList;
     } //getAccessPoints()
 
     public int getAPSignalStrength(String BSSID, WifiManager wifiManager){
         int RSSI = -100;
-        for(ScanResult s: mAPList){
-            if(s.BSSID.equals(BSSID)){
-                RSSI = s.level;
+        for(AccessPoint s: mAPList){
+            if(s.getBSSID().equals(BSSID)){
+                RSSI = s.getSignalLevel();
             }
         }
         return RSSI;
