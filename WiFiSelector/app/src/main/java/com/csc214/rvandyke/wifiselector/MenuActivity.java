@@ -10,11 +10,10 @@ CSC 214 Project 3
 TA: Julian Weiss
  */
 
-public class APListActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_aplist);
     }
-} //end class APListActivity
+}
