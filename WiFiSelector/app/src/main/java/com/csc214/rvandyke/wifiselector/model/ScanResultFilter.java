@@ -10,8 +10,10 @@ TA: Julian Weiss
 import android.content.Context;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
+import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ScanResultFilter {
@@ -26,11 +28,15 @@ public class ScanResultFilter {
         mWifiManager = wifiManager;
         mSSID = SSID;
         mFavoritedAP = FavoriteAPList.get(c.getApplicationContext());
-        updateScan();
+        updateScan(c);
     } //ScanResultFilter()
 
-    public void updateScan(){
+    public void updateScan(Context c){
+        mFavoritedAP = FavoriteAPList.get(c.getApplicationContext());
         ArrayList<ScanResult> unfiltered = (ArrayList)mWifiManager.getScanResults();
+        if(unfiltered==null){
+            Log.d(TAG, "scan failed");
+        }
         mAPList = new ArrayList<AccessPoint>();
         for(ScanResult s: unfiltered){
             if(s.SSID.equals(mSSID)){
@@ -41,6 +47,7 @@ public class ScanResultFilter {
                 mAPList.add(temp);
             }
         }
+        Collections.sort(mAPList);
     } //updateScan()
 
     public List<AccessPoint> getAccessPoints(){

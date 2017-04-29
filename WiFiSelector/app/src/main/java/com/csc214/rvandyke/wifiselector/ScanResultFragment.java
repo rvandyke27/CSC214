@@ -64,7 +64,7 @@ public class ScanResultFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         Bundle args = getArguments();
-        String mSSID = args.getString(ARG_SSID);
+        mSSID = args.getString(ARG_SSID);
 
         WifiManager manager = (WifiManager)getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         mScanFilter = new ScanResultFilter(manager, mSSID, getContext());
@@ -73,8 +73,15 @@ public class ScanResultFragment extends Fragment {
         return view;
     } //onCreateview()
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        mScanFilter = new ScanResultFilter((WifiManager)getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE), mSSID, getContext());
+        updateUI();
+    }
+
     public void updateUI(){
-        mScanFilter.updateScan();
+        mScanFilter.updateScan(getContext());
         List<AccessPoint> filteredScans = mScanFilter.getAccessPoints();
         if(mAdapter == null){
             mAdapter = new ScanResultAdapter(filteredScans);
