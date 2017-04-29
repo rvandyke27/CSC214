@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.csc214.rvandyke.wifiselector.model.AccessPoint;
 import com.csc214.rvandyke.wifiselector.model.FavoriteAPList;
@@ -57,10 +58,10 @@ public class FavoriteDialog extends DialogFragment {
         mFavoriteAPList = FavoriteAPList.get(getContext());
 
         View view = LayoutInflater.from(getContext()).inflate(R.layout.favorite_dialog, null);
-        EditText nickname= (EditText)view.findViewById(R.id.edit_text_nickname);
-        TextView ssid = (TextView)view.findViewById(R.id.text_view_ssid);
-        TextView bssid = (TextView)view.findViewById(R.id.text_view_bssid);
-        EditText notes = (EditText)view.findViewById(R.id.edit_text_notes);
+        final EditText nickname= (EditText)view.findViewById(R.id.edit_text_nickname);
+        final TextView ssid = (TextView)view.findViewById(R.id.text_view_ssid);
+        final TextView bssid = (TextView)view.findViewById(R.id.text_view_bssid);
+        final EditText notes = (EditText)view.findViewById(R.id.edit_text_notes);
         Button cancel = (Button)view.findViewById(R.id.button_cancel);
         Button removeF = (Button)view.findViewById(R.id.button_remove_from_favorites);
         Button ok = (Button)view.findViewById(R.id.button_ok);
@@ -86,6 +87,19 @@ public class FavoriteDialog extends DialogFragment {
         removeF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(mFavoriteAPList.removeFavorite(bssid.getText().toString())){
+                    Toast.makeText(getContext(), "Access Point " + bssid.getText().toString() + " unfavorited", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(getContext(), "Deletion failed", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFavoriteAPList.updateAP(new AccessPoint(bssid.getText().toString(), ssid.getText().toString(), nickname.getText().toString(), notes.getText().toString()));
 
             }
         });

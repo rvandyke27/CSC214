@@ -20,7 +20,6 @@ public class FavoritedAPViewHolder extends RecyclerView.ViewHolder {
     private final TextView mNotes;
     private final Button mConnectButton;
     private final Button mEditButton;
-    private final Button mUnfavoriteButton;
 
     private AccessPoint  mAccessPoint;
 
@@ -31,7 +30,6 @@ public class FavoritedAPViewHolder extends RecyclerView.ViewHolder {
         mNotes = (TextView)itemView.findViewById(R.id.text_view_notes);
         mConnectButton = (Button)itemView.findViewById(R.id.button_connect);
         mEditButton = (Button)itemView.findViewById(R.id.button_edit_entry);
-        mUnfavoriteButton = (Button)itemView.findViewById(R.id.button_unfavorite);
 
         mConnectButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,12 +45,6 @@ public class FavoritedAPViewHolder extends RecyclerView.ViewHolder {
             }
         });
 
-        mUnfavoriteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO: remove from favorites
-            }
-        });
     } //FavoritedAPViewHolder()
 
     public void bind(AccessPoint ap){

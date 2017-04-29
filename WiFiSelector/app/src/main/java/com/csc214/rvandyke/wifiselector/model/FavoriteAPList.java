@@ -73,6 +73,13 @@ public class FavoriteAPList {
         Log.d(TAG, "added " + ap.getNickname() + " to favorites");
     } //addFavorite()
 
+    public boolean removeFavorite(String BSSID){
+        Log.d(TAG, "unfavorite " + BSSID);
+        return mDatabase.delete(APTable.NAME,
+                "_bssid = ?",
+                new String[]{String.valueOf(BSSID)}) > 0;
+    } //removeFavorite()
+
     public AccessPoint getAccessPoint(String BSSID) {
         FavoriteAPsCursorWrapper wrapper = queryAPs(null, null);
         AccessPoint result = null;
