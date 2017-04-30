@@ -24,7 +24,7 @@ public class MenuActivity extends AppCompatActivity {
 
         mWifiManager = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
-        mSSID = mWifiManager.getConnectionInfo().getSSID();
+        mSSID = mWifiManager.getConnectionInfo().getSSID().replaceAll("^\"(.*)\"$", "$1");
     } //onCreate()
 
 } //end class MenuActivity

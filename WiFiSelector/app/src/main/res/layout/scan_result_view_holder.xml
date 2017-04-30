@@ -25,7 +25,7 @@
             android:layout_weight="1"
             android:text="-17"
             android:textAlignment="center"
-            android:id="@+id/text_view_rssi"
+            android:id="@+id/text_view_signal_strength"
             android:textSize="24sp"/>
 
     </LinearLayout>

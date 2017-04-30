@@ -95,18 +95,6 @@ public class ScanResultFragment extends Fragment {
     } //onCreateview()
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        if(requestCode == 13){
-            for(int grantResult: grantResults) {
-                if(grantResult != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
-            }
-            mScanFilter.updateScan();
-        }
-    }
-
-    @Override
     public void onResume(){
         super.onResume();
         mScanFilter = new ScanResultFilter((WifiManager)getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE), mSSID, getContext());
@@ -204,7 +192,7 @@ public class ScanResultFragment extends Fragment {
         public ScanResultViewHolder(View itemView){
             super(itemView);
             mBSSID = (TextView)itemView.findViewById(R.id.text_view_bssid);
-            mRSSI = (TextView)itemView.findViewById(R.id.text_view_rssi);
+            mRSSI = (TextView)itemView.findViewById(R.id.text_view_signal_strength);
             mConnectButton = (Button)itemView.findViewById(R.id.button_connect);
             mAddToFavoritesButton = (Button)itemView.findViewById(R.id.button_add_to_favorites);
 
@@ -225,8 +213,9 @@ public class ScanResultFragment extends Fragment {
 
         public void bind(AccessPoint sr) {
             mScanResult = sr;
+            Log.d(TAG, "binding " + sr.getBSSID() + ", RSSI " + sr.getSignalLevel());
             mBSSID.setText(sr.getBSSID());
-            mRSSI.setText(sr.getSignalLevel());
+            mRSSI.setText(String.valueOf(sr.getSignalLevel()));
         } //bind()
 
     } //end class ScanResultViewHolder
@@ -240,11 +229,15 @@ public class ScanResultFragment extends Fragment {
             Log.d(TAG, "ScanReceiver onReceive() called");
             if(intent.getBooleanExtra(WifiManager.EXTRA_RESULTS_UPDATED, false)) {
                 Log.d(TAG, "onReceive() scan completed");
-                mScanFilter.filterScans(mWifiManager.getScanResults());
-                List<AccessPoint> filteredScans = mScanFilter.getAccessPoints();
-                if (filteredScans.isEmpty()) {
+                List<ScanResult> scanResults = mWifiManager.getScanResults();
+                if (scanResults.isEmpty()) {
                     Log.d(TAG, "crisis");
                 }
+                else{
+                    Log.d(TAG, "scanResults is not empty!");
+                }
+                mScanFilter.filterScans(scanResults);
+                List<AccessPoint> filteredScans = mScanFilter.getAccessPoints();
                 if (mAdapter == null) {
                     mAdapter = new ScanResultAdapter(filteredScans);
                     mRecyclerView.setAdapter(mAdapter);

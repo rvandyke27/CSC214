@@ -26,7 +26,7 @@ public class FavoritedAPViewHolder extends RecyclerView.ViewHolder {
     public FavoritedAPViewHolder(View itemView) {
         super(itemView);
         mNickname = (TextView)itemView.findViewById(R.id.text_view_nickname);
-        mRSSI = (TextView)itemView.findViewById(R.id.text_view_rssi);
+        mRSSI = (TextView)itemView.findViewById(R.id.text_view_signal_strength);
         mNotes = (TextView)itemView.findViewById(R.id.text_view_notes);
         mConnectButton = (Button)itemView.findViewById(R.id.button_connect);
         mEditButton = (Button)itemView.findViewById(R.id.button_edit_entry);
@@ -50,7 +50,7 @@ public class FavoritedAPViewHolder extends RecyclerView.ViewHolder {
     public void bind(AccessPoint ap){
         mAccessPoint = ap;
         mNickname.setText(ap.getNickname());
-        mRSSI.setText(ap.getSignalLevel());
+        mRSSI.setText(String.valueOf(ap.getSignalLevel()));
         mNotes.setText(ap.getNotes());
     } //bind()
 

@@ -1,0 +1,64 @@
+[
+    {
+        "outputFile": "/Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 51,
+                    "endOffset": 102
+                },
+                "from": {
+                    "file": "/Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 105,
+                        "endColumn": 51,
+                        "endOffset": 152
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 107,
+                    "endColumn": 49,
+                    "endOffset": 152
+                },
+                "from": {
+                    "file": "/Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 49,
+                        "endOffset": 100
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 157,
+                    "endColumn": 54,
+                    "endOffset": 207
+                },
+                "from": {
+                    "file": "/Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 157,
+                        "endColumn": 54,
+                        "endOffset": 207
+                    }
+                }
+            }
+        ]
+    }
+]

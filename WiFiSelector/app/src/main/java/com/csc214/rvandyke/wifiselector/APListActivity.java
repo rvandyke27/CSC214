@@ -1,6 +1,7 @@
 package com.csc214.rvandyke.wifiselector;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
@@ -30,6 +31,9 @@ public class APListActivity extends MenuActivity {
         ActionBar ab = getSupportActionBar();
         ab.setSubtitle(mSSID);
 
+        //permissions
+
+
         mWifiManager.setWifiEnabled(true);
         //wait for wifi to turn on
         while(!mWifiManager.isWifiEnabled()){}
@@ -42,6 +46,17 @@ public class APListActivity extends MenuActivity {
                 .commit();
 
     } //onCreate()
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if(requestCode == 13){
+            for(int grantResult: grantResults) {
+                if(grantResult != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+            }
+        }
+    }
 
     @Override
     public void onDestroy(){

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="de34cb484c544596831383a321eecefb805fce26">
+        <dex dex="/Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_4e37e3007b8a8fb50be4a72d74dad45bd8b8efea/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="7225b1d6f802432a71326faf1a6d9c1d04e7bb21">
+        <dex dex="/Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_bd7222fb334cc72a0c1c34e4d54aec8ba7bff9a0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/libs/dropbox-android-sdk-1.6.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="986e7a58e925c6f91b88ae8d3224a0550b65acc7">
+        <dex dex="/Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/build/intermediates/transforms/dex/debug/folders/1000/2/dropbox-android-sdk-1.6.3_aa7d55302e2beae11537efe005261824bd4f8445/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/libs/json_simple-1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="5e303a03d04e6788dddfa3655272580ae0fc13bb">
+        <dex dex="/Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/build/intermediates/transforms/dex/debug/folders/1000/2/json_simple-1.1_bbe4fd9dcfc6d27ef0ba64e6b9fc99455fd64e9e/classes.dex" />
+    </item>
+
+</items>

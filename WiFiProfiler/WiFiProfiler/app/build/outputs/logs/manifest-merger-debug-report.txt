@@ -1,0 +1,85 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:2:1-29:12
+	package
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:3:5-33
+		INJECTED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml
+	android:versionName
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:5:5-30
+		INJECTED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml
+	android:versionCode
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:4:5-29
+		INJECTED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:6:5-92
+	android:name
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:6:22-73
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:7:5-92
+	android:name
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:7:22-73
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:8:5-95
+	android:name
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:8:22-76
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:9:5-95
+	android:name
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:9:22-76
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:10:5-95
+	android:name
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:10:22-76
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:11:5-97
+	android:name
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:11:22-78
+uses-permission#android.permission.INTERNET
+ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:12:5-83
+	android:name
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:12:22-64
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:13:5-84
+	android:name
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:13:22-65
+application
+ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:14:5-28:19
+	android:label
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:14:18-50
+	android:icon
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:14:51-87
+activity#com.harris.mobihoc.mobiHoc
+ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:15:9-25:20
+	android:label
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:16:19-51
+	android:name
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:15:19-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:17:13-24:29
+action#android.intent.action.MAIN
+ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:18:17-69
+	android:name
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:18:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:19:17-77
+	android:name
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:19:27-74
+service#com.harris.mobihoc.mobiHocService
+ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:26:9-27:19
+	android:label
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:26:67-97
+	android:name
+		ADDED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml:26:18-66
+uses-sdk
+INJECTED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+	android:targetSdkVersion
+		INJECTED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/MacCri2/AndroidStudioProjects/WiFiProfiler/app/src/main/AndroidManifest.xml
