@@ -44,7 +44,7 @@ public class AccessPoint implements Comparable<AccessPoint>{
 
     @Override
     public int compareTo(AccessPoint other){
-        return mSignalLevel - other.getSignalLevel();
+        return other.getSignalLevel() - mSignalLevel;
     } //compareTo()
 
     public boolean isFavorited(){
