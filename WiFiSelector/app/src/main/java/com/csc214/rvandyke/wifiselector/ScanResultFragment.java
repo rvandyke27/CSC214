@@ -1,10 +1,16 @@
 package com.csc214.rvandyke.wifiselector;
 
 
+import android.Manifest;
 import android.bluetooth.le.AdvertiseData;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,6 +28,8 @@ import com.csc214.rvandyke.wifiselector.model.ScanResultFilter;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /*
@@ -40,6 +48,8 @@ public class ScanResultFragment extends Fragment {
     private String mSSID;
     private ScanResultAdapter mAdapter;
     private ScanResultFilter mScanFilter;
+    private ScanReceiver mScanReceiver;
+    protected WifiManager mWifiManager;
 
     public ScanResultFragment() {
         // Required empty public constructor
@@ -66,31 +76,59 @@ public class ScanResultFragment extends Fragment {
         Bundle args = getArguments();
         mSSID = args.getString(ARG_SSID);
 
-        WifiManager manager = (WifiManager)getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-        mScanFilter = new ScanResultFilter(manager, mSSID, getContext());
-        updateUI();
+        mWifiManager = (WifiManager)getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        mScanFilter = new ScanResultFilter(mWifiManager, mSSID, getContext());
+
+        mScanReceiver = new ScanReceiver();
+
+        if(Build.VERSION.SDK_INT >= 23) {
+            if ((getActivity().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) || (getActivity().checkSelfPermission(Manifest.permission.ACCESS_WIFI_STATE) != PackageManager.PERMISSION_GRANTED)){
+                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_WIFI_STATE}, 13);
+                Log.d(TAG, "requesting permissions");
+            }
+            else{
+                mScanFilter.updateScan();
+            }
+        }
 
         return view;
     } //onCreateview()
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if(requestCode == 13){
+            for(int grantResult: grantResults) {
+                if(grantResult != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+            }
+            mScanFilter.updateScan();
+        }
+    }
+
+    @Override
     public void onResume(){
         super.onResume();
         mScanFilter = new ScanResultFilter((WifiManager)getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE), mSSID, getContext());
-        updateUI();
-    }
+        mScanFilter.updateScan();
+    } //onResume
 
-    public void updateUI(){
-        mScanFilter.updateScan(getContext());
-        List<AccessPoint> filteredScans = mScanFilter.getAccessPoints();
-        if(mAdapter == null){
-            mAdapter = new ScanResultAdapter(filteredScans);
-            mRecyclerView.setAdapter(mAdapter);
-        }
-        else{
-            mAdapter.updateScans(filteredScans);
-        }
-    } //updateUI()
+    @Override
+    public void onStart(){
+        super.onStart();
+
+        IntentFilter i = new IntentFilter();
+        i.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
+        getActivity().registerReceiver(mScanReceiver, i);
+        Log.d(TAG, "Receiver registered in onStart()");
+    } //onStart()
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        getActivity().unregisterReceiver(mScanReceiver);
+        Log.d(TAG, "Receiver unregistered in onStop()");
+    }
 
     private class ScanResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         private static final String TAG = "ScanResultAdapter";
@@ -192,5 +230,30 @@ public class ScanResultFragment extends Fragment {
         } //bind()
 
     } //end class ScanResultViewHolder
+
+    public class ScanReceiver extends BroadcastReceiver {
+        public ScanReceiver(){
+        }
+
+        @Override
+        public void onReceive(Context context, Intent intent){
+            Log.d(TAG, "ScanReceiver onReceive() called");
+            if(intent.getBooleanExtra(WifiManager.EXTRA_RESULTS_UPDATED, false)) {
+                Log.d(TAG, "onReceive() scan completed");
+                mScanFilter.filterScans(mWifiManager.getScanResults());
+                List<AccessPoint> filteredScans = mScanFilter.getAccessPoints();
+                if (filteredScans.isEmpty()) {
+                    Log.d(TAG, "crisis");
+                }
+                if (mAdapter == null) {
+                    mAdapter = new ScanResultAdapter(filteredScans);
+                    mRecyclerView.setAdapter(mAdapter);
+                } else {
+                    mAdapter.updateScans(filteredScans);
+                }
+            }
+        }
+
+    } //end class ScanReceiver
 
 } //end class
