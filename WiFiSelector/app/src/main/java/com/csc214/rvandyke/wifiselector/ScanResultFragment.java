@@ -237,6 +237,7 @@ public class ScanResultFragment extends Fragment implements ConnectionUpdatedLis
         private final Button mConnectButton;
         private final Button mAddToFavoritesButton;
         private AccessPoint mScanResult;
+        private ConnectionUpdatedListener mListener;
 
         public ScanResultViewHolder(View itemView){
             super(itemView);
