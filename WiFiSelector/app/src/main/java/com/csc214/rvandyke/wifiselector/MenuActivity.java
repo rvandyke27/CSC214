@@ -17,6 +17,7 @@ public class MenuActivity extends AppCompatActivity {
 
     protected WifiManager mWifiManager;
     protected String mSSID;
+    protected String mBSSID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class MenuActivity extends AppCompatActivity {
         mWifiManager = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         mSSID = mWifiManager.getConnectionInfo().getSSID().replaceAll("^\"(.*)\"$", "$1");
+        mBSSID = mWifiManager.getConnectionInfo().getBSSID().replaceAll("^\"(.*)\"$", "$1");
     } //onCreate()
 
 } //end class MenuActivity

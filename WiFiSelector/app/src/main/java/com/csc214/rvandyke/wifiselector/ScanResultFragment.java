@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.wifi.ScanResult;
+import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.csc214.rvandyke.wifiselector.model.AccessPoint;
+import com.csc214.rvandyke.wifiselector.model.ConnectionUpdatedListener;
 import com.csc214.rvandyke.wifiselector.model.FavoriteAPList;
 import com.csc214.rvandyke.wifiselector.model.ScanResultFilter;
 
@@ -39,25 +41,29 @@ CSC 214 Project 3
 TA: Julian Weiss
  */
 
-public class ScanResultFragment extends Fragment {
+public class ScanResultFragment extends Fragment implements ConnectionUpdatedListener{
     private static final String TAG = "ScanResultFragment";
 
     private static String ARG_SSID = "ssid";
+    private static String ARG_BSSID = "bssid";
 
     private RecyclerView mRecyclerView;
-    private String mSSID;
+    protected String mSSID;
+    protected String mBSSID;
     private ScanResultAdapter mAdapter;
     private ScanResultFilter mScanFilter;
     private ScanReceiver mScanReceiver;
     protected WifiManager mWifiManager;
+    private WifiConfiguration mActiveConfiguration;
 
     public ScanResultFragment() {
         // Required empty public constructor
     }
 
-    public static ScanResultFragment newInstance(String ssid){
+    public static ScanResultFragment newInstance(String ssid, String bssid){
         Bundle args = new Bundle();
         args.putString(ARG_SSID, ssid);
+        args.putString(ARG_BSSID, bssid);
         ScanResultFragment fragment = new ScanResultFragment();
         fragment.setArguments(args);
         Log.d(TAG, "newInstance() called");
@@ -75,9 +81,17 @@ public class ScanResultFragment extends Fragment {
 
         Bundle args = getArguments();
         mSSID = args.getString(ARG_SSID);
+        mBSSID = args.getString(ARG_BSSID);
 
         mWifiManager = (WifiManager)getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         mScanFilter = new ScanResultFilter(mWifiManager, mSSID, getContext());
+
+        for(WifiConfiguration wc: mWifiManager.getConfiguredNetworks()){
+            if(wc.status == WifiConfiguration.Status.CURRENT){
+                mActiveConfiguration = wc;
+                break;
+            }
+        }
 
         mScanReceiver = new ScanReceiver();
 
@@ -116,6 +130,35 @@ public class ScanResultFragment extends Fragment {
         super.onStop();
         getActivity().unregisterReceiver(mScanReceiver);
         Log.d(TAG, "Receiver unregistered in onStop()");
+    } //onStop()
+
+    public boolean connectTo(String bssid){
+        WifiConfiguration newWc = new WifiConfiguration();
+        mBSSID = bssid;
+        newWc.BSSID = bssid;
+        newWc.SSID = mSSID;
+        newWc.preSharedKey = mActiveConfiguration.preSharedKey;
+        newWc.hiddenSSID = mActiveConfiguration.hiddenSSID;
+        newWc.status = WifiConfiguration.Status.ENABLED;
+        newWc.allowedAuthAlgorithms = mActiveConfiguration.allowedAuthAlgorithms;
+        newWc.allowedGroupCiphers = mActiveConfiguration.allowedGroupCiphers;
+        newWc.allowedKeyManagement = mActiveConfiguration.allowedKeyManagement;
+        newWc.allowedPairwiseCiphers = mActiveConfiguration.allowedPairwiseCiphers;
+        newWc.allowedProtocols = mActiveConfiguration.allowedProtocols;
+        newWc.wepKeys = mActiveConfiguration.wepKeys;
+        newWc.wepTxKeyIndex = mActiveConfiguration.wepTxKeyIndex;
+        if(Build.VERSION.SDK_INT >= 18) {
+            newWc.enterpriseConfig = mActiveConfiguration.enterpriseConfig;
+        }
+        if(Build.VERSION.SDK_INT >= 23) {
+            newWc.roamingConsortiumIds = mActiveConfiguration.roamingConsortiumIds;
+            newWc.providerFriendlyName = mActiveConfiguration.providerFriendlyName;
+        }
+
+        int netId = mWifiManager.addNetwork(newWc);
+        Log.d(TAG, "Added network w/ id " + netId);
+        return mWifiManager.enableNetwork(netId, true);
+        //TODO: pass connection info back up to activity
     }
 
     private class ScanResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
@@ -141,7 +184,6 @@ public class ScanResultFragment extends Fragment {
 
         @Override
         public int getItemCount(){
-            Log.d(TAG, "getItemCount() called");
             return mFilteredScanResults.size();
         } //getItemCount()
 
@@ -159,6 +201,13 @@ public class ScanResultFragment extends Fragment {
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             AccessPoint ap = mFilteredScanResults.get(position);
+            if(ap.getBSSID().equals(mBSSID)){
+                holder.itemView.setBackground(getResources().getDrawable(R.drawable.connected_ap_background));
+                Log.d(TAG, "indicate active AP");
+            }
+            else{
+                holder.itemView.setBackground(getResources().getDrawable(R.drawable.nonconnected_ap_background));
+            }
             Log.d(TAG, "onBindViewHolder() called on position " + position);
             if(ap.isFavorited()){
                 FavoritedAPViewHolder holder1 = (FavoritedAPViewHolder) holder;
@@ -215,7 +264,8 @@ public class ScanResultFragment extends Fragment {
             mScanResult = sr;
             Log.d(TAG, "binding " + sr.getBSSID() + ", RSSI " + sr.getSignalLevel());
             mBSSID.setText(sr.getBSSID());
-            mRSSI.setText(String.valueOf(sr.getSignalLevel()));
+            String ss = "Signal Strength: " + WifiManager.calculateSignalLevel(sr.getSignalLevel(), 100);
+            mRSSI.setText(ss);
         } //bind()
 
     } //end class ScanResultViewHolder
@@ -230,12 +280,6 @@ public class ScanResultFragment extends Fragment {
             if(intent.getBooleanExtra(WifiManager.EXTRA_RESULTS_UPDATED, false)) {
                 Log.d(TAG, "onReceive() scan completed");
                 List<ScanResult> scanResults = mWifiManager.getScanResults();
-                if (scanResults.isEmpty()) {
-                    Log.d(TAG, "crisis");
-                }
-                else{
-                    Log.d(TAG, "scanResults is not empty!");
-                }
                 mScanFilter.filterScans(scanResults);
                 List<AccessPoint> filteredScans = mScanFilter.getAccessPoints();
                 if (mAdapter == null) {

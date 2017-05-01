@@ -1,5 +1,6 @@
 package com.csc214.rvandyke.wifiselector;
 
+import android.net.wifi.WifiManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -50,7 +51,8 @@ public class FavoritedAPViewHolder extends RecyclerView.ViewHolder {
     public void bind(AccessPoint ap){
         mAccessPoint = ap;
         mNickname.setText(ap.getNickname());
-        mRSSI.setText(String.valueOf(ap.getSignalLevel()));
+        String ss = "Signal Strength: " + WifiManager.calculateSignalLevel(ap.getSignalLevel(), 100);
+        mRSSI.setText(ss);
         mNotes.setText(ap.getNotes());
     } //bind()
 

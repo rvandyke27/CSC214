@@ -25,6 +25,7 @@ public class APListActivity extends MenuActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "Connection to SSID: " + mSSID + ", BSSID: " + mBSSID);
         setContentView(R.layout.activity_aplist);
         Log.d(TAG, "onCreate() called");
 
@@ -39,7 +40,7 @@ public class APListActivity extends MenuActivity {
         while(!mWifiManager.isWifiEnabled()){}
         Log.d(TAG, "Wifi enabled");
 
-        mScanResults = ScanResultFragment.newInstance(mSSID);
+        mScanResults = ScanResultFragment.newInstance(mSSID, mBSSID);
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction()
                 .replace(R.id.scan_list_frame, mScanResults, null)
