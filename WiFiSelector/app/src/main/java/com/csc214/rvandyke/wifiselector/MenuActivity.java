@@ -23,10 +23,10 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mWifiManager = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        //mWifiManager = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
-        mSSID = mWifiManager.getConnectionInfo().getSSID().replaceAll("^\"(.*)\"$", "$1");
-        mBSSID = mWifiManager.getConnectionInfo().getBSSID().replaceAll("^\"(.*)\"$", "$1");
+        //mSSID = mWifiManager.getConnectionInfo().getSSID().replaceAll("^\"(.*)\"$", "$1");
+        //mBSSID = mWifiManager.getConnectionInfo().getBSSID().replaceAll("^\"(.*)\"$", "$1");
     } //onCreate()
 
 } //end class MenuActivity

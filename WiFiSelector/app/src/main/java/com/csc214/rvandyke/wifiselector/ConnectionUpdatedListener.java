@@ -1,4 +1,4 @@
-package com.csc214.rvandyke.wifiselector.model;
+package com.csc214.rvandyke.wifiselector;
 
 /*
 Rebecca Van Dyke

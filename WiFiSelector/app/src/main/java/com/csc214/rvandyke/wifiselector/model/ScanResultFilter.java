@@ -47,7 +47,7 @@ public class ScanResultFilter {
         ArrayList<AccessPoint> filtered = new ArrayList<>();
         Log.d(TAG, "filtering for SSID " + mSSID);
         for (ScanResult s : unfiltered) {
-            Log.d(TAG, "AP SSID= " + s.SSID);
+            //Log.d(TAG, "AP SSID= " + s.SSID);
             if (s.SSID.equals(mSSID)) {
                 AccessPoint temp = new AccessPoint(s);
                 Log.d(TAG, "found access point " + s.BSSID);

@@ -51,7 +51,7 @@ public class FavoritedAPViewHolder extends RecyclerView.ViewHolder {
     public void bind(AccessPoint ap){
         mAccessPoint = ap;
         mNickname.setText(ap.getNickname());
-        String ss = "Signal Strength: " + WifiManager.calculateSignalLevel(ap.getSignalLevel(), 100);
+        String ss = "Signal Strength: " + WifiManager.calculateSignalLevel(ap.getSignalLevel(), 10);
         mRSSI.setText(ss);
         mNotes.setText(ap.getNotes());
     } //bind()

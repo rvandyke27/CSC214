@@ -2,7 +2,6 @@ package com.csc214.rvandyke.wifiselector;
 
 
 import android.Manifest;
-import android.bluetooth.le.AdvertiseData;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +13,7 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -22,16 +22,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.csc214.rvandyke.wifiselector.model.AccessPoint;
-import com.csc214.rvandyke.wifiselector.model.ConnectionUpdatedListener;
-import com.csc214.rvandyke.wifiselector.model.FavoriteAPList;
 import com.csc214.rvandyke.wifiselector.model.ScanResultFilter;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /*
@@ -55,6 +50,7 @@ public class ScanResultFragment extends Fragment implements ConnectionUpdatedLis
     private ScanReceiver mScanReceiver;
     protected WifiManager mWifiManager;
     private WifiConfiguration mActiveConfiguration;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     public ScanResultFragment() {
         // Required empty public constructor
@@ -79,6 +75,14 @@ public class ScanResultFragment extends Fragment implements ConnectionUpdatedLis
         mRecyclerView = (RecyclerView)view.findViewById(R.id.scan_result_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        mSwipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.swipe_refresh_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mScanFilter.updateScan();
+            }
+        });
+
         Bundle args = getArguments();
         mSSID = args.getString(ARG_SSID);
         mBSSID = args.getString(ARG_BSSID);
@@ -99,6 +103,7 @@ public class ScanResultFragment extends Fragment implements ConnectionUpdatedLis
             if ((getActivity().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) || (getActivity().checkSelfPermission(Manifest.permission.ACCESS_WIFI_STATE) != PackageManager.PERMISSION_GRANTED)){
                 requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_WIFI_STATE}, 13);
                 Log.d(TAG, "requesting permissions");
+                mScanFilter.updateScan();
             }
             else{
                 mScanFilter.updateScan();
@@ -157,7 +162,10 @@ public class ScanResultFragment extends Fragment implements ConnectionUpdatedLis
 
         int netId = mWifiManager.addNetwork(newWc);
         Log.d(TAG, "Added network w/ id " + netId);
-        return mWifiManager.enableNetwork(netId, true);
+        mWifiManager.disconnect();
+        boolean success = mWifiManager.enableNetwork(netId, true);
+        mWifiManager.reconnect();
+        return success;
         //TODO: pass connection info back up to activity
     }
 
@@ -177,8 +185,6 @@ public class ScanResultFragment extends Fragment implements ConnectionUpdatedLis
         //TODO: favorite
 
         //TODO: launch edit dialogfragment
-
-        //TODO: connect
 
         //TODO: unfavorite
 
@@ -249,7 +255,14 @@ public class ScanResultFragment extends Fragment implements ConnectionUpdatedLis
             mConnectButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TODO:update connection to this
+                    if(connectTo(mScanResult.getBSSID())){
+                        Toast.makeText(getContext(), "Connection updated", Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Toast.makeText(getContext(), "Connection failed", Toast.LENGTH_LONG).show();
+                    }
+                    mScanFilter.updateScan();
+                    mSwipeRefreshLayout.setRefreshing(true);
                 }
             });
 
@@ -265,7 +278,7 @@ public class ScanResultFragment extends Fragment implements ConnectionUpdatedLis
             mScanResult = sr;
             Log.d(TAG, "binding " + sr.getBSSID() + ", RSSI " + sr.getSignalLevel());
             mBSSID.setText(sr.getBSSID());
-            String ss = "Signal Strength: " + WifiManager.calculateSignalLevel(sr.getSignalLevel(), 100);
+            String ss = "Signal Strength: " + WifiManager.calculateSignalLevel(sr.getSignalLevel(), 10);
             mRSSI.setText(ss);
         } //bind()
 
@@ -289,6 +302,7 @@ public class ScanResultFragment extends Fragment implements ConnectionUpdatedLis
                 } else {
                     mAdapter.updateScans(filteredScans);
                 }
+                mSwipeRefreshLayout.setRefreshing(false);
             }
         }
 
