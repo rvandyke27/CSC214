@@ -72,41 +72,42 @@ public class ScanResultFragment extends Fragment implements ConnectionUpdatedLis
         Log.d(TAG, "onCreateView() called");
         View view = inflater.inflate(R.layout.fragment_scan_result, container, false);
 
-        mRecyclerView = (RecyclerView)view.findViewById(R.id.scan_result_recycler);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mWifiManager = (WifiManager) getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        if(mWifiManager.isWifiEnabled()) {
+            mRecyclerView = (RecyclerView) view.findViewById(R.id.scan_result_recycler);
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        mSwipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.swipe_refresh_layout);
-        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                mScanFilter.updateScan();
+            mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+            mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    mScanFilter.updateScan();
+                }
+            });
+
+            Bundle args = getArguments();
+            mSSID = args.getString(ARG_SSID);
+            mBSSID = args.getString(ARG_BSSID);
+
+            mScanFilter = new ScanResultFilter(mWifiManager, mSSID, getContext());
+
+            for (WifiConfiguration wc : mWifiManager.getConfiguredNetworks()) {
+                if (wc.status == WifiConfiguration.Status.CURRENT) {
+                    mActiveConfiguration = wc;
+                    break;
+                }
             }
-        });
 
-        Bundle args = getArguments();
-        mSSID = args.getString(ARG_SSID);
-        mBSSID = args.getString(ARG_BSSID);
+            mScanReceiver = new ScanReceiver();
 
-        mWifiManager = (WifiManager)getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-        mScanFilter = new ScanResultFilter(mWifiManager, mSSID, getContext());
-
-        for(WifiConfiguration wc: mWifiManager.getConfiguredNetworks()){
-            if(wc.status == WifiConfiguration.Status.CURRENT){
-                mActiveConfiguration = wc;
-                break;
-            }
-        }
-
-        mScanReceiver = new ScanReceiver();
-
-        if(Build.VERSION.SDK_INT >= 23) {
-            if ((getActivity().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) || (getActivity().checkSelfPermission(Manifest.permission.ACCESS_WIFI_STATE) != PackageManager.PERMISSION_GRANTED)){
-                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_WIFI_STATE}, 13);
-                Log.d(TAG, "requesting permissions");
-                mScanFilter.updateScan();
-            }
-            else{
-                mScanFilter.updateScan();
+            if (Build.VERSION.SDK_INT >= 23) {
+                if ((getActivity().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) || (getActivity().checkSelfPermission(Manifest.permission.ACCESS_WIFI_STATE) != PackageManager.PERMISSION_GRANTED)) {
+                    requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_WIFI_STATE}, 13);
+                    Log.d(TAG, "requesting permissions");
+                    mScanFilter.updateScan();
+                } else {
+                    mScanFilter.updateScan();
+                }
             }
         }
 
