@@ -22,18 +22,18 @@
             android:text="Nickname"
             android:id="@+id/text_view_nickname"
             android:textAlignment="center"
-            android:textSize="24sp"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="-17"
-            android:id="@+id/text_view_signal_strength"
-            android:textAlignment="center"
-            android:textSize="24sp"/>
+            android:textSize="26sp"/>
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="UR_CONNECTED"
+        android:id="@+id/text_view_ssid"
+        android:textAlignment="center"
+        android:textSize="20sp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -41,25 +41,11 @@
         android:text="Notes about where you were when you last used this network, how busy it was, time of day, etc"
         android:id="@+id/text_view_notes"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Connect"
-            android:id="@+id/button_connect"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Edit"
-            android:id="@+id/button_edit_entry"/>
-
-    </LinearLayout>
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Edit"
+        android:id="@+id/button_edit_entry"/>
 
 </LinearLayout>

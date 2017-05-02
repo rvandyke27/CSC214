@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="WifiManager.SCAN_RESULTS_COMPLETED_ACTION"/>
+    <uses-permission android:name="WifiManager.SCAN_RESULTS_COMPLETED_ACTION" />
 
     <application
         android:allowBackup="true"
@@ -25,17 +25,18 @@
             </intent-filter>
         </activity>
         <activity android:name=".MenuActivity" />
-        <activity android:name=".HelpActivity"/>
-        <receiver android:name=".ScanResultFragment$ScanReceiver"
+        <activity android:name=".HelpActivity" />
+
+        <receiver
+            android:name=".ScanResultFragment$ScanReceiver"
             android:enabled="true"
             android:exported="true">
-
             <intent-filter>
-                <action android:name="WifiManager.SCAN_RESULTS_COMPLETED_ACTION"/>
+                <action android:name="WifiManager.SCAN_RESULTS_COMPLETED_ACTION" />
             </intent-filter>
-
         </receiver>
 
+        <activity android:name=".FavoriteAPListActivity"></activity>
     </application>
 
 </manifest>
