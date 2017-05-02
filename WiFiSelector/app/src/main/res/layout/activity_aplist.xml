@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/scan_list_frame"
-    tools:context="com.csc214.rvandyke.wifiselector.APListActivity">
+    tools:context="com.csc214.rvandyke.wifiselector.ScanResultActivity">
 
 
 

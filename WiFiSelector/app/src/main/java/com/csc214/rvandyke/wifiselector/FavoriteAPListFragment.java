@@ -35,6 +35,7 @@ public class FavoriteAPListFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private FavoriteAPList mFavoriteAPList;
+    private APAdapter mAdapter;
     private String mSSID;
     private String mBSSID;
 
@@ -63,9 +64,29 @@ public class FavoriteAPListFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         Bundle args = getArguments();
-        
-        return inflater.inflate(R.layout.fragment_favorite_aplist, container, false);
+        mSSID = args.getString(ARG_SSID);
+        mBSSID = args.getString(ARG_BSSID);
+        updateUI();
+
+        return view;
     } //onCreateView()
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        updateUI();
+    } //onResume()
+
+    public void updateUI(){
+        List<AccessPoint> apList = mFavoriteAPList.getFavoritedAPs();
+        if(mAdapter == null){
+            mAdapter = new FavoriteAPListFragment.APAdapter(apList);
+            mRecyclerView.setAdapter(mAdapter);
+        }
+        else{
+            mAdapter.update(apList);
+        }
+    } //updateUI()
 
     private class APAdapter extends RecyclerView.Adapter<APViewHolder>{
         private static final String TAG = "APAdapter";
