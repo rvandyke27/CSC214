@@ -18,7 +18,7 @@ CSC 214 Project 3
 TA: Julian Weiss
  */
 
-public class APListActivity extends MenuActivity {
+public class ScanResultActivity extends MenuActivity {
     private static final String TAG = "APListActivity";
 
     private ScanResultFragment mScanResults;
@@ -33,23 +33,15 @@ public class APListActivity extends MenuActivity {
         ActionBar ab = getSupportActionBar();
         ab.setSubtitle(mSSID);
 
-        mWifiManager = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        if(!mWifiManager.isWifiEnabled()){
+            //TODO: turn wifi on somehow
+        }
 
-        Log.d(TAG, "Wifi state " + mWifiManager.getWifiState());
-        //Log.d(TAG, "Wifi enabled");
-        boolean t1 = mWifiManager.setWifiEnabled(false);
-        Log.d(TAG, "did turn off wifi work? " + t1);
-        Log.d(TAG, "Wifi turned off? " + mWifiManager.setWifiEnabled(false) + ", current wifi state: " + mWifiManager.getWifiState());
-        //Log.d(TAG, "Wifi disabled");
-        boolean t2 = mWifiManager.setWifiEnabled(true);
-        Log.d(TAG, "did turn on wifi work? " + t2);
-        Log.d(TAG, "Wifi state " + mWifiManager.getWifiState());
-
-        //mScanResults = ScanResultFragment.newInstance(mSSID, mBSSID);
-        //FragmentManager manager = getSupportFragmentManager();
-        //manager.beginTransaction()
-                //.replace(R.id.scan_list_frame, mScanResults, null)
-                //.commit();
+        mScanResults = ScanResultFragment.newInstance(mSSID, mBSSID);
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction()
+                .replace(R.id.scan_list_frame, mScanResults, null)
+                .commit();
 
     } //onCreate()
 
