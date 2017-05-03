@@ -32,6 +32,7 @@ public class AccessPoint implements Comparable<AccessPoint>{
         }
         mSignalLevel = scan.level;
         mFavorited = false;
+        mNotes = "";
     } //AccessPoint()
 
     public AccessPoint(String bssid, String ssid, String nickname, String notes){
@@ -74,6 +75,10 @@ public class AccessPoint implements Comparable<AccessPoint>{
     public int getSignalLevel(){
         return mSignalLevel;
     } //getSignalLevel()
+
+    public void setSignalLevel(int signalLevel){
+        mSignalLevel = signalLevel;
+    }
 
     public void setNickname(String nickname){
         mNickname = nickname;

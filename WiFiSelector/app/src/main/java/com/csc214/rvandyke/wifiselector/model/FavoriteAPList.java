@@ -76,8 +76,8 @@ public class FavoriteAPList {
     public boolean removeFavorite(String BSSID){
         Log.d(TAG, "unfavorite " + BSSID);
         return mDatabase.delete(APTable.NAME,
-                "_bssid = ?",
-                new String[]{String.valueOf(BSSID)}) > 0;
+                APTable.Cols.BSSID + "=?",
+                new String[]{BSSID}) > 0;
     } //removeFavorite()
 
     public AccessPoint getAccessPoint(String BSSID) {

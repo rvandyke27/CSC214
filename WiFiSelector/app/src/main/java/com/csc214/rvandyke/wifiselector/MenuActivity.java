@@ -6,6 +6,7 @@ import android.net.wifi.WifiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
 /*
@@ -35,6 +36,11 @@ public class MenuActivity extends AppCompatActivity {
 
     } //onCreate()
 
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.application_menu, menu);
+        return true;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         boolean handled = false;
@@ -48,7 +54,10 @@ public class MenuActivity extends AppCompatActivity {
                 break;
             case R.id.menu_item_favorites:
                 Log.d(TAG, "Favorites list activity launched from Menu");
-                //TODO
+                Intent viewFavorites = new Intent(this, FavoriteAPListActivity.class);
+                viewFavorites.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(viewFavorites);
+                handled = true;
                 break;
             default:
                 handled = super.onOptionsItemSelected(item);

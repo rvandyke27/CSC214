@@ -1,8 +1,11 @@
 package com.csc214.rvandyke.wifiselector;
 
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -93,21 +96,31 @@ public class FavoriteDialog extends DialogFragment {
                 else{
                     Toast.makeText(getContext(), "Deletion failed", Toast.LENGTH_LONG).show();
                 }
+                done();
             }
         });
 
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mFavoriteAPList.updateAP(new AccessPoint(bssid.getText().toString(), ssid.getText().toString(), nickname.getText().toString(), notes.getText().toString()));
-
+                if(mFavoriteAPList.contains(bssid.getText().toString())) {
+                    mFavoriteAPList.updateAP(new AccessPoint(bssid.getText().toString(), ssid.getText().toString(), nickname.getText().toString(), notes.getText().toString()));
+                }
+                else{
+                    mFavoriteAPList.addFavorite(new AccessPoint(bssid.getText().toString(), ssid.getText().toString(), nickname.getText().toString(), notes.getText().toString()));
+                }
+                done();
             }
         });
 
         return new AlertDialog.Builder(getContext())
                 .setView(view)
                 .create();
-    }
+    } //onCreateDialog()
 
+    public void done(){
+        getParentFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, null);
+        dismiss();
+    } //onDismiss()
 
 } //end class FavoriteDialog

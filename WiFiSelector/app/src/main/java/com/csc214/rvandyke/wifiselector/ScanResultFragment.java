@@ -2,8 +2,10 @@ package com.csc214.rvandyke.wifiselector;
 
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -25,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.csc214.rvandyke.wifiselector.model.AccessPoint;
+import com.csc214.rvandyke.wifiselector.model.FavoriteAPList;
 import com.csc214.rvandyke.wifiselector.model.ScanResultFilter;
 
 import java.util.List;
@@ -36,11 +39,13 @@ CSC 214 Project 3
 TA: Julian Weiss
  */
 
-public class ScanResultFragment extends Fragment implements ConnectionUpdatedListener{
+public class ScanResultFragment extends Fragment{
     private static final String TAG = "ScanResultFragment";
 
     private static String ARG_SSID = "ssid";
     private static String ARG_BSSID = "bssid";
+
+    public static final int DIALOG_FRAGMENT = 1;
 
     private RecyclerView mRecyclerView;
     protected String mSSID;
@@ -167,8 +172,17 @@ public class ScanResultFragment extends Fragment implements ConnectionUpdatedLis
         boolean success = mWifiManager.enableNetwork(netId, true);
         mWifiManager.reconnect();
         return success;
-        //TODO: pass connection info back up to activity
+    } //connectTo()
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(requestCode == 0){
+            if(resultCode == Activity.RESULT_OK){
+                mAdapter.notifyDataSetChanged();
+            }
+        }
     }
+
 
     private class ScanResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         private static final String TAG = "ScanResultAdapter";
@@ -182,12 +196,6 @@ public class ScanResultFragment extends Fragment implements ConnectionUpdatedLis
             mFilteredScanResults = filteredScanResults;
             notifyDataSetChanged();
         } //update()
-
-        //TODO: favorite
-
-        //TODO: launch edit dialogfragment
-
-        //TODO: unfavorite
 
         @Override
         public int getItemCount(){
@@ -212,13 +220,18 @@ public class ScanResultFragment extends Fragment implements ConnectionUpdatedLis
                 holder.itemView.setBackground(getResources().getDrawable(R.drawable.connected_ap_background));
                 Log.d(TAG, "indicate active AP");
             }
+            else if(ap.isFavorited()){
+                holder.itemView.setBackground(getResources().getDrawable(R.drawable.favorited_ap_background));
+            }
             else{
                 holder.itemView.setBackground(getResources().getDrawable(R.drawable.nonconnected_ap_background));
             }
             Log.d(TAG, "onBindViewHolder() called on position " + position);
             if(ap.isFavorited()){
                 FavoritedAPViewHolder holder1 = (FavoritedAPViewHolder) holder;
-                holder1.bind(ap);
+                AccessPoint fAP = FavoriteAPList.get(getContext()).getAccessPoint(ap.getBSSID());
+                fAP.setSignalLevel(ap.getSignalLevel());
+                holder1.bind(fAP);
             }
             else{
                 ScanResultViewHolder holder0 = (ScanResultViewHolder) holder;
@@ -238,13 +251,67 @@ public class ScanResultFragment extends Fragment implements ConnectionUpdatedLis
 
     } //end class ScanResultAdapter
 
+    public class FavoritedAPViewHolder extends RecyclerView.ViewHolder {
+        private static final String TAG = "FavoritedAPViewHolder";
+        private final TextView mNickname;
+        private final TextView mRSSI;
+        private final TextView mNotes;
+        private final Button mConnectButton;
+        private final Button mEditButton;
+
+        private AccessPoint  mAccessPoint;
+
+        public FavoritedAPViewHolder(View itemView) {
+            super(itemView);
+            mNickname = (TextView)itemView.findViewById(R.id.text_view_nickname);
+            mRSSI = (TextView)itemView.findViewById(R.id.text_view_signal_strength);
+            mNotes = (TextView)itemView.findViewById(R.id.text_view_notes);
+            mConnectButton = (Button)itemView.findViewById(R.id.button_connect);
+            mEditButton = (Button)itemView.findViewById(R.id.button_edit_entry);
+
+            mConnectButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(connectTo(mAccessPoint.getBSSID())){
+                        Toast.makeText(getContext(), "Connection updated", Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Toast.makeText(getContext(), "Connection failed", Toast.LENGTH_LONG).show();
+                    }
+                    mAdapter.notifyDataSetChanged();
+                    mScanFilter.updateScan();
+                    mSwipeRefreshLayout.setRefreshing(true);
+                }
+            });
+
+            mEditButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FavoriteDialog addToFavorites = FavoriteDialog.newInstance(mAccessPoint);
+                    addToFavorites.setTargetFragment(ScanResultFragment.this, 0);
+                    addToFavorites.show(getChildFragmentManager(), "favorite");
+                }
+            });
+
+        } //FavoritedAPViewHolder()
+
+        public void bind(AccessPoint ap){
+            Log.d(TAG, "Binding " + ap.getBSSID() + ", Nickname = " + ap.getNickname());
+            mAccessPoint = ap;
+            mNickname.setText(ap.getNickname());
+            String ss = "Signal Strength: " + WifiManager.calculateSignalLevel(ap.getSignalLevel(), 10);
+            mRSSI.setText(ss);
+            mNotes.setText(ap.getNotes());
+        } //bind()
+
+    } //end class
+
     private class ScanResultViewHolder extends RecyclerView.ViewHolder{
         private final TextView mBSSID;
         private final TextView mRSSI;
         private final Button mConnectButton;
         private final Button mAddToFavoritesButton;
         private AccessPoint mScanResult;
-        private ConnectionUpdatedListener mListener;
 
         public ScanResultViewHolder(View itemView){
             super(itemView);
@@ -262,15 +329,19 @@ public class ScanResultFragment extends Fragment implements ConnectionUpdatedLis
                     else{
                         Toast.makeText(getContext(), "Connection failed", Toast.LENGTH_LONG).show();
                     }
+                    mAdapter.notifyDataSetChanged();
                     mScanFilter.updateScan();
                     mSwipeRefreshLayout.setRefreshing(true);
+
                 }
             });
 
             mAddToFavoritesButton.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
-                    //TODO: launch addtofavorites dialogfragment
+                    FavoriteDialog addToFavorites = FavoriteDialog.newInstance(mScanResult);
+                    addToFavorites.setTargetFragment(ScanResultFragment.this, 0);
+                    addToFavorites.show(getChildFragmentManager(), "favorite");
                 }
             });
         } //ScanResultViewHolder()
