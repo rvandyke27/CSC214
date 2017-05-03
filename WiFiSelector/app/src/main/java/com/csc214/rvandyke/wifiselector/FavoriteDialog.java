@@ -119,7 +119,7 @@ public class FavoriteDialog extends DialogFragment {
     } //onCreateDialog()
 
     public void done(){
-        getParentFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, null);
+        getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, null);
         dismiss();
     } //onDismiss()
 

@@ -181,7 +181,7 @@ public class ScanResultFragment extends Fragment{
                 mAdapter.notifyDataSetChanged();
             }
         }
-    }
+    } //onActivityResult()
 
 
     private class ScanResultAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
@@ -289,7 +289,7 @@ public class ScanResultFragment extends Fragment{
                 public void onClick(View v) {
                     FavoriteDialog addToFavorites = FavoriteDialog.newInstance(mAccessPoint);
                     addToFavorites.setTargetFragment(ScanResultFragment.this, 0);
-                    addToFavorites.show(getChildFragmentManager(), "favorite");
+                    addToFavorites.show(getFragmentManager(), "favorite");
                 }
             });
 
@@ -341,7 +341,7 @@ public class ScanResultFragment extends Fragment{
                 public void onClick(View v){
                     FavoriteDialog addToFavorites = FavoriteDialog.newInstance(mScanResult);
                     addToFavorites.setTargetFragment(ScanResultFragment.this, 0);
-                    addToFavorites.show(getChildFragmentManager(), "favorite");
+                    addToFavorites.show(getFragmentManager(), "favorite");
                 }
             });
         } //ScanResultViewHolder()

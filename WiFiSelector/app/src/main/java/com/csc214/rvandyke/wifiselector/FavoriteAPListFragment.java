@@ -1,6 +1,8 @@
 package com.csc214.rvandyke.wifiselector;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -88,6 +90,16 @@ public class FavoriteAPListFragment extends Fragment {
         }
     } //updateUI()
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(requestCode == 0){
+            if(resultCode == Activity.RESULT_OK){
+                mAdapter.update(mFavoriteAPList.getFavoritedAPs());
+                mAdapter.notifyDataSetChanged();
+            }
+        }
+    }
+
     private class APAdapter extends RecyclerView.Adapter<APViewHolder>{
         private static final String TAG = "APAdapter";
         private List<AccessPoint> mAPList;
@@ -123,6 +135,7 @@ public class FavoriteAPListFragment extends Fragment {
     private class APViewHolder extends RecyclerView.ViewHolder {
         private final TextView mNickname;
         private final TextView mSSID;
+        private final TextView mBSSID;
         private final TextView mNotes;
         private final Button mEdit;
 
@@ -132,13 +145,16 @@ public class FavoriteAPListFragment extends Fragment {
             super(itemView);
             mNickname = (TextView)itemView.findViewById(R.id.text_view_nickname);
             mSSID = (TextView)itemView.findViewById(R.id.text_view_ssid);
+            mBSSID = (TextView)itemView.findViewById(R.id.text_view_bssid);
             mNotes = (TextView)itemView.findViewById(R.id.text_view_notes);
             mEdit = (Button)itemView.findViewById(R.id.button_edit_entry);
 
             mEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TODO: Launch edit fragment
+                    FavoriteDialog addToFavorites = FavoriteDialog.newInstance(mAP);
+                    addToFavorites.setTargetFragment(FavoriteAPListFragment.this, 0);
+                    addToFavorites.show(getFragmentManager(), "favorite");
                 }
             });
         } //APViewHolder()
@@ -147,6 +163,7 @@ public class FavoriteAPListFragment extends Fragment {
             mAP = ap;
             mNickname.setText(ap.getNickname());
             mSSID.setText(ap.getSSID());
+            mBSSID.setText(ap.getBSSID());
             mNotes.setText(ap.getNotes());
         } //bind()
     } //end class APViewHolder

@@ -16,7 +16,7 @@ CSC 214 Project 3
 TA: Julian Weiss
  */
 
-public class MenuActivity extends AppCompatActivity {
+public abstract class MenuActivity extends AppCompatActivity {
     private static final String TAG = "MenuActivity";
 
     protected WifiManager mWifiManager;
