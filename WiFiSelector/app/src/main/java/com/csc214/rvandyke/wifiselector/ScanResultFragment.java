@@ -84,6 +84,7 @@ public class ScanResultFragment extends Fragment{
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
             mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
+            mSwipeRefreshLayout.setRefreshing(true);
             mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
@@ -170,14 +171,12 @@ public class ScanResultFragment extends Fragment{
             newWc.providerFriendlyName = mActiveConfiguration.providerFriendlyName;
         }
 
-        //int netId = mWifiManager.addNetwork(newWc);
-        //Log.d(TAG, "Added network w/ id " + netId);
-        //mWifiManager.disconnect()
-        //boolean success = mWifiManager.enableNetwork(netId, true);
-        //mWifiManager.reconnect()
+        int netId = mWifiManager.addNetwork(newWc);
+        Log.d(TAG, "Added network w/ id " + netId);
+        mWifiManager.disconnect();
+        mWifiManager.enableNetwork(netId, true);
+        return mWifiManager.reconnect();
 
-        //return success && mWifiManager.reassociate();
-        return false;
     } //connectTo()
 
     @Override

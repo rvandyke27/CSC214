@@ -15,4 +15,7 @@
         android:id="@+id/menu_item_current"
         android:title="Test Active Connection" />
 
+    <item
+        android:id="@+id/menu_item_advanced_requirements"
+        android:title="Advanced Requirements" />
 </menu>

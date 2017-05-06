@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -54,6 +55,10 @@ public abstract class MenuActivity extends AppCompatActivity implements WifiErro
     public boolean onOptionsItemSelected(MenuItem item) {
         boolean handled = false;
         switch(item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                handled = true;
+                break;
             case R.id.menu_item_help:
                 Log.d(TAG, "Help activity launched from Menu");
                 Intent help = new Intent(this, HelpActivity.class);
@@ -74,6 +79,14 @@ public abstract class MenuActivity extends AppCompatActivity implements WifiErro
                 currentConnection.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(currentConnection);
                 handled = true;
+                break;
+            case R.id.menu_item_advanced_requirements:
+                Log.d(TAG, "Advanced Requirements activity launched from Menu");
+                Intent advancedReq = new Intent(this, AdvancedRequirementsActivity.class);
+                advancedReq.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(advancedReq);
+                handled = true;
+                break;
             default:
                 handled = super.onOptionsItemSelected(item);
                 break;
