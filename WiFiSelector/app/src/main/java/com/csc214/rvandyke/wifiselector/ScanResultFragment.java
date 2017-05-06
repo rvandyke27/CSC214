@@ -56,6 +56,7 @@ public class ScanResultFragment extends Fragment{
     protected WifiManager mWifiManager;
     private WifiConfiguration mActiveConfiguration;
     private SwipeRefreshLayout mSwipeRefreshLayout;
+    private boolean mReceiverRegistered;
 
     public ScanResultFragment() {
         // Required empty public constructor
@@ -124,23 +125,26 @@ public class ScanResultFragment extends Fragment{
         super.onResume();
         mScanFilter = new ScanResultFilter((WifiManager)getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE), mSSID, getContext());
         mScanFilter.updateScan();
-    } //onResume
-
-    @Override
-    public void onStart(){
-        super.onStart();
-
         IntentFilter i = new IntentFilter();
         i.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
         getActivity().registerReceiver(mScanReceiver, i);
-        Log.d(TAG, "Receiver registered in onStart()");
-    } //onStart()
+        mReceiverRegistered = true;
+        Log.d(TAG, "Receiver registered in onResume()");
+    } //onResume
 
     @Override
     public void onStop(){
         super.onStop();
-        getActivity().unregisterReceiver(mScanReceiver);
-        Log.d(TAG, "Receiver unregistered in onStop()");
+        if(mReceiverRegistered) {
+            try {
+                //getActivity().unregisterReceiver(mScanReceiver);
+                //Log.d(TAG, "Receiver unregistered in onPause()");
+                //mReceiverRegistered = false;
+            }
+            catch(IllegalArgumentException e){
+                Log.d(TAG, "receiver already unregistered");
+            }
+        }
     } //onStop()
 
     public boolean connectTo(String bssid){
@@ -166,19 +170,19 @@ public class ScanResultFragment extends Fragment{
             newWc.providerFriendlyName = mActiveConfiguration.providerFriendlyName;
         }
 
-        int netId = mWifiManager.addNetwork(newWc);
-        Log.d(TAG, "Added network w/ id " + netId);
-        mWifiManager.disconnect();
-        boolean success = mWifiManager.enableNetwork(netId, true);
-        mWifiManager.reconnect();
-        return success;
+        //int netId = mWifiManager.addNetwork(newWc);
+        //Log.d(TAG, "Added network w/ id " + netId);
+        //boolean success = mWifiManager.enableNetwork(netId, true);
+        //return success && mWifiManager.reassociate();
+        return false;
     } //connectTo()
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == 0){
             if(resultCode == Activity.RESULT_OK){
-                mAdapter.notifyDataSetChanged();
+                mScanFilter.updateScan();
+                mSwipeRefreshLayout.setRefreshing(true);
             }
         }
     } //onActivityResult()
@@ -278,7 +282,6 @@ public class ScanResultFragment extends Fragment{
                     else{
                         Toast.makeText(getContext(), "Connection failed", Toast.LENGTH_LONG).show();
                     }
-                    mAdapter.notifyDataSetChanged();
                     mScanFilter.updateScan();
                     mSwipeRefreshLayout.setRefreshing(true);
                 }
@@ -329,7 +332,6 @@ public class ScanResultFragment extends Fragment{
                     else{
                         Toast.makeText(getContext(), "Connection failed", Toast.LENGTH_LONG).show();
                     }
-                    mAdapter.notifyDataSetChanged();
                     mScanFilter.updateScan();
                     mSwipeRefreshLayout.setRefreshing(true);
 

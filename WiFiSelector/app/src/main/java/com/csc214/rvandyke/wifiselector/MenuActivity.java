@@ -2,6 +2,7 @@ package com.csc214.rvandyke.wifiselector;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,7 +17,7 @@ CSC 214 Project 3
 TA: Julian Weiss
  */
 
-public abstract class MenuActivity extends AppCompatActivity {
+public abstract class MenuActivity extends AppCompatActivity implements WifiErrorDialog.WifiConfiguredListener{
     private static final String TAG = "MenuActivity";
 
     protected WifiManager mWifiManager;
@@ -28,18 +29,26 @@ public abstract class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         mWifiManager = (WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-
-        if(mWifiManager.isWifiEnabled()) {
+        ConnectivityManager manager = (ConnectivityManager)getSystemService(MenuActivity.CONNECTIVITY_SERVICE);
+        if(manager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting()){
             mSSID = mWifiManager.getConnectionInfo().getSSID().replaceAll("^\"(.*)\"$", "$1");
             mBSSID = mWifiManager.getConnectionInfo().getBSSID().replaceAll("^\"(.*)\"$", "$1");
+        }
+        else{
+            WifiErrorDialog dialog = new WifiErrorDialog();
+            dialog.show(getSupportFragmentManager(), "wifi");
         }
 
     } //onCreate()
 
+    public void onWifiConfigured(){
+        this.recreate();
+    }
+
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.application_menu, menu);
         return true;
-    }
+    } //onCreateOptionsMenu()
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
