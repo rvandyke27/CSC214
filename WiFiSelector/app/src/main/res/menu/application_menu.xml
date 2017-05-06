@@ -8,11 +8,11 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/menu_item_scan_aps"
-        android:title="Scan Access Points" />
-
-    <item
         android:id="@+id/menu_item_favorites"
         android:title="View Favorites" />
+
+    <item
+        android:id="@+id/menu_item_current"
+        android:title="Test Active Connection" />
 
 </menu>

@@ -68,6 +68,12 @@ public abstract class MenuActivity extends AppCompatActivity implements WifiErro
                 startActivity(viewFavorites);
                 handled = true;
                 break;
+            case R.id.menu_item_current:
+                Log.d(TAG, "Current Connection test activity launched from Menu");
+                Intent currentConnection = new Intent(this, CurrentConnectionInfoActivity.class);
+                currentConnection.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(currentConnection);
+                handled = true;
             default:
                 handled = super.onOptionsItemSelected(item);
                 break;

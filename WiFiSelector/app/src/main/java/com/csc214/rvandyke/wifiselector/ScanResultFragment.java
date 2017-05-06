@@ -137,9 +137,9 @@ public class ScanResultFragment extends Fragment{
         super.onStop();
         if(mReceiverRegistered) {
             try {
-                //getActivity().unregisterReceiver(mScanReceiver);
-                //Log.d(TAG, "Receiver unregistered in onPause()");
-                //mReceiverRegistered = false;
+                getActivity().unregisterReceiver(mScanReceiver);
+                Log.d(TAG, "Receiver unregistered in onPause()");
+                mReceiverRegistered = false;
             }
             catch(IllegalArgumentException e){
                 Log.d(TAG, "receiver already unregistered");
@@ -172,7 +172,10 @@ public class ScanResultFragment extends Fragment{
 
         //int netId = mWifiManager.addNetwork(newWc);
         //Log.d(TAG, "Added network w/ id " + netId);
+        //mWifiManager.disconnect()
         //boolean success = mWifiManager.enableNetwork(netId, true);
+        //mWifiManager.reconnect()
+
         //return success && mWifiManager.reassociate();
         return false;
     } //connectTo()

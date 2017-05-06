@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:paddingBottom="10dp">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context="com.csc214.rvandyke.wifiselector.HelpActivity"
-    android:layout_margin="5dp">
+    tools:context="com.csc214.rvandyke.wifiselector.HelpActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -25,7 +26,8 @@
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:id="@+id/image_view_ap"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -35,7 +37,23 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This application lets you override that choice based on your experience on that network. The signal strength is certainly a factor, but anything greater than -67 should be sufficient."/>
+        android:text="This application lets you override that choice based on your experience on that network. The signal strength is certainly a factor, but it's a very fickle thing to measure. Small differences in signal strength shouldn't perceptibly impact your experience. Signal strength is given as a number between 1 and 10."/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Key Terms"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SSID: This is the name of the overall network, the same as the name you see when you choose a Wi-Fi network through your default OS."/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BSSID: This is a name you don't see, the unique name of the physical access point connection you're using. Unlike your OS, this app lets you choose between these to optimize performance."/>
 
 </LinearLayout>
 </ScrollView>

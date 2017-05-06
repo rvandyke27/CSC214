@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="WifiManager.SCAN_RESULTS_COMPLETED_ACTION" />
 
     <application
@@ -17,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ScanResultActivity"
+        <activity
+            android:name=".ScanResultActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,10 +27,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HelpActivity"
-            android:parentActivityName=".ScanResultActivity"/>
-        <activity android:name=".FavoriteAPListActivity"
-            android:parentActivityName=".ScanResultActivity"/>
+        <activity
+            android:name=".HelpActivity"
+            android:parentActivityName=".ScanResultActivity" />
+        <activity
+            android:name=".FavoriteAPListActivity"
+            android:parentActivityName=".ScanResultActivity" />
 
         <receiver
             android:name=".ScanResultFragment$ScanReceiver"
@@ -39,6 +43,7 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name=".CurrentConnectionInfoActivity"></activity>
     </application>
 
 </manifest>

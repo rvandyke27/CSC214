@@ -33,10 +33,6 @@ public class ScanResultActivity extends MenuActivity {
         ActionBar ab = getSupportActionBar();
         ab.setSubtitle(mSSID);
 
-        if(!mWifiManager.isWifiEnabled()){
-            //TODO: turn wifi on somehow
-        }
-
         mScanResults = ScanResultFragment.newInstance(mSSID, mBSSID);
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction()

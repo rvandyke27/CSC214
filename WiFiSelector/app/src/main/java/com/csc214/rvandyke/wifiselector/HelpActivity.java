@@ -1,8 +1,12 @@
 package com.csc214.rvandyke.wifiselector;
 
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 /*
 Rebecca Van Dyke
@@ -17,6 +21,11 @@ public class HelpActivity extends MenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+
+        ImageView ap = (ImageView)findViewById(R.id.image_view_ap);
+        Resources res = getResources();
+        Drawable accessPoint = res.getDrawable(R.drawable.wifiap);
+        ap.setImageDrawable(accessPoint);
 
         ActionBar ab = getSupportActionBar();
         ab.setSubtitle("Help");
