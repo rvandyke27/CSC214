@@ -2,7 +2,6 @@ package com.csc214.rvandyke.wifiselector;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 /*
@@ -12,24 +11,24 @@ CSC 214 Project 3
 TA: Julian Weiss
  */
 
-public class AdvancedRequirementsActivity extends MenuActivity {
+public class MyMapActivity extends MenuActivity {
     private static final String TAG = "AdvancedReqActivity";
 
-    private AdvancedRequirementsFragment mFrag;
+    private MyMapFragment mFrag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_advanced_requirements);
+        setContentView(R.layout.activity_my_map);
 
         ActionBar ab = getSupportActionBar();
         ab.setSubtitle("Project Advanced Requirements");
 
         FragmentManager manager = getSupportFragmentManager();
-        mFrag = (AdvancedRequirementsFragment) manager.findFragmentById(R.id.advanced_requirements_frame);
+        mFrag = (MyMapFragment) manager.findFragmentById(R.id.advanced_requirements_frame);
 
         if(mFrag == null) {
-            mFrag = AdvancedRequirementsFragment.newInstance();
+            mFrag = MyMapFragment.newInstance();
             manager.beginTransaction().add(R.id.advanced_requirements_frame, mFrag, null).commit();
         }
     } //onCreate()
-} //end class AdvancedRequirementsActivity
+} //end class MyMapActivity

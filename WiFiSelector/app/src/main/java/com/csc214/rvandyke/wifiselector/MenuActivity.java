@@ -82,7 +82,7 @@ public abstract class MenuActivity extends AppCompatActivity implements WifiErro
                 break;
             case R.id.menu_item_advanced_requirements:
                 Log.d(TAG, "Advanced Requirements activity launched from Menu");
-                Intent advancedReq = new Intent(this, AdvancedRequirementsActivity.class);
+                Intent advancedReq = new Intent(this, MyMapActivity.class);
                 advancedReq.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(advancedReq);
                 handled = true;

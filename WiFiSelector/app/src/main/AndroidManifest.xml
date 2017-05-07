@@ -46,7 +46,7 @@
 
         <activity android:name=".CurrentConnectionInfoActivity"
             android:parentActivityName=".ScanResultActivity"/>
-        <activity android:name=".AdvancedRequirementsActivity"
+        <activity android:name=".MyMapActivity"
             android:parentActivityName=".ScanResultActivity" />
 
         <meta-data

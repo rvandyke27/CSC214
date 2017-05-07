@@ -34,7 +34,7 @@ CSC 214 Project 3
 TA: Julian Weiss
  */
 
-public class AdvancedRequirementsFragment extends SupportMapFragment {
+public class MyMapFragment extends SupportMapFragment {
     private static final String TAG  = "AdvancedReqFrag";
 
     public static final float ZOOM = 16.0f;
@@ -45,12 +45,12 @@ public class AdvancedRequirementsFragment extends SupportMapFragment {
     private GoogleApiClient mClient;
     private GoogleMap mMap;
 
-    public AdvancedRequirementsFragment() {
+    public MyMapFragment() {
         // Required empty public constructor
     }
 
-    public static AdvancedRequirementsFragment newInstance(){
-        return new AdvancedRequirementsFragment();
+    public static MyMapFragment newInstance(){
+        return new MyMapFragment();
     } //newInstance()
 
     @Override

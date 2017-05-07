@@ -179,13 +179,13 @@ public class ScanResultFragment extends Fragment{
             newWc.providerFriendlyName = mActiveConfiguration.providerFriendlyName;
         }
 
-        int netId = mWifiManager.addNetwork(newWc);
-        Log.d(TAG, "Added network w/ id " + netId);
+        //int netId = mWifiManager.addNetwork(newWc);
+        //Log.d(TAG, "Added network w/ id " + netId);
         //mWifiManager.disconnect();
-        return mWifiManager.enableNetwork(netId, true);
+        //return mWifiManager.enableNetwork(netId, true);
         //return mWifiManager.reconnect();
 
-        //return false;
+        return false;
 
     } //connectTo()
 
@@ -285,6 +285,8 @@ public class ScanResultFragment extends Fragment{
             mConnectButton = (Button)itemView.findViewById(R.id.button_connect);
             mEditButton = (Button)itemView.findViewById(R.id.button_edit_entry);
 
+            mConnectButton.setEnabled(false);
+
             mConnectButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -334,6 +336,8 @@ public class ScanResultFragment extends Fragment{
             mRSSI = (TextView)itemView.findViewById(R.id.text_view_signal_strength);
             mConnectButton = (Button)itemView.findViewById(R.id.button_connect);
             mAddToFavoritesButton = (Button)itemView.findViewById(R.id.button_add_to_favorites);
+
+            mConnectButton.setEnabled(false);
 
             mConnectButton.setOnClickListener(new View.OnClickListener() {
                 @Override
