@@ -9,6 +9,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
@@ -53,6 +55,7 @@ public class ScanResultFragment extends Fragment{
     private ScanResultAdapter mAdapter;
     private ScanResultFilter mScanFilter;
     private ScanReceiver mScanReceiver;
+    private WifiStateChangedReceiver mWifiStateReceiver;
     protected WifiManager mWifiManager;
     private WifiConfiguration mActiveConfiguration;
     private SwipeRefreshLayout mSwipeRefreshLayout;
@@ -106,6 +109,7 @@ public class ScanResultFragment extends Fragment{
             }
 
             mScanReceiver = new ScanReceiver();
+            mWifiStateReceiver = new WifiStateChangedReceiver();
 
             if (Build.VERSION.SDK_INT >= 23) {
                 if ((getActivity().checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) || (getActivity().checkSelfPermission(Manifest.permission.ACCESS_WIFI_STATE) != PackageManager.PERMISSION_GRANTED)) {
@@ -129,6 +133,9 @@ public class ScanResultFragment extends Fragment{
         IntentFilter i = new IntentFilter();
         i.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
         getActivity().registerReceiver(mScanReceiver, i);
+        IntentFilter j = new IntentFilter();
+        j.addAction("android.net.wifi.STATE_CHANGE");
+        getActivity().registerReceiver(mWifiStateReceiver, j);
         mReceiverRegistered = true;
         Log.d(TAG, "Receiver registered in onResume()");
     } //onResume
@@ -139,6 +146,7 @@ public class ScanResultFragment extends Fragment{
         if(mReceiverRegistered) {
             try {
                 getActivity().unregisterReceiver(mScanReceiver);
+                getActivity().unregisterReceiver(mWifiStateReceiver);
                 Log.d(TAG, "Receiver unregistered in onPause()");
                 mReceiverRegistered = false;
             }
@@ -150,7 +158,7 @@ public class ScanResultFragment extends Fragment{
 
     public boolean connectTo(String bssid){
         WifiConfiguration newWc = new WifiConfiguration();
-        mBSSID = bssid;
+        //mBSSID = bssid;
         newWc.BSSID = bssid;
         newWc.SSID = mSSID;
         newWc.preSharedKey = mActiveConfiguration.preSharedKey;
@@ -173,9 +181,11 @@ public class ScanResultFragment extends Fragment{
 
         int netId = mWifiManager.addNetwork(newWc);
         Log.d(TAG, "Added network w/ id " + netId);
-        mWifiManager.disconnect();
-        mWifiManager.enableNetwork(netId, true);
-        return mWifiManager.reconnect();
+        //mWifiManager.disconnect();
+        return mWifiManager.enableNetwork(netId, true);
+        //return mWifiManager.reconnect();
+
+        //return false;
 
     } //connectTo()
 
@@ -278,7 +288,7 @@ public class ScanResultFragment extends Fragment{
             mConnectButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(connectTo(mAccessPoint.getBSSID())){
+                    if(!connectTo(mAccessPoint.getBSSID())){
                         Toast.makeText(getContext(), "Connection updated", Toast.LENGTH_LONG).show();
                     }
                     else{
@@ -334,8 +344,8 @@ public class ScanResultFragment extends Fragment{
                     else{
                         Toast.makeText(getContext(), "Connection failed", Toast.LENGTH_LONG).show();
                     }
-                    mScanFilter.updateScan();
-                    mSwipeRefreshLayout.setRefreshing(true);
+                    //mScanFilter.updateScan();
+                    //mSwipeRefreshLayout.setRefreshing(true);
 
                 }
             });
@@ -380,8 +390,27 @@ public class ScanResultFragment extends Fragment{
                 }
                 mSwipeRefreshLayout.setRefreshing(false);
             }
-        }
+        } //onReceive()
 
     } //end class ScanReceiver
+
+    public class WifiStateChangedReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            ConnectivityManager manager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo wifi = manager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+
+            if(wifi.isConnected()){
+                Log.d(TAG, "Network status changed:connected");
+                mBSSID = mWifiManager.getConnectionInfo().getBSSID();
+                mScanFilter.updateScan();
+                mSwipeRefreshLayout.setRefreshing(true);
+            }
+            else{
+                Log.d(TAG, "Network status changed:disconnected");
+                mWifiManager.reconnect();
+            }
+        } //onReceive()
+    } //end class WifiStateChangedReceiver
 
 } //end class
