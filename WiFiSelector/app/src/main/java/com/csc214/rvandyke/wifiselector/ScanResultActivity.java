@@ -18,7 +18,7 @@ CSC 214 Project 3
 TA: Julian Weiss
  */
 
-public class ScanResultActivity extends MenuActivity {
+public class ScanResultActivity extends MenuActivity implements FavoriteDialog.DialogDismissedListener{
     private static final String TAG = "APListActivity";
 
     private ScanResultFragment mScanResults;
@@ -40,6 +40,11 @@ public class ScanResultActivity extends MenuActivity {
                 .commit();
 
     } //onCreate()
+
+    @Override
+    public void onChildDismissed(){
+        mScanResults.dialogDismissed();
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {

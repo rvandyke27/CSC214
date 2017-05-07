@@ -15,44 +15,56 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Beginner's guide:"
-        android:textSize="24sp" />
+        android:text="@string/beginner_s_guide"
+        style="@style/headerText" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/noteFormatText"
         android:text="Wi-fi networks are often made up of multiple access points, the physical hardware your phone uses to access the internet. They usually look something like this:"/>
 
     <ImageView
         android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_height="160dp"
         android:layout_gravity="center"
         android:id="@+id/image_view_ap"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/noteFormatText"
         android:text="Your phone typically doesn't account for traffic when it chooses an access point, only signal strength, so in places like libraries, too much burden tends to fall on a few access points."/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/noteFormatText"
         android:text="This application lets you override that choice based on your experience on that network. The signal strength is certainly a factor, but it's a very fickle thing to measure. Small differences in signal strength shouldn't perceptibly impact your experience. Signal strength is given as a number between 1 and 10."/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/noteFormatText"
+        android:text="Because signal strength is such a fussy thing to measure, don't worry if an access point disappears. In all likelyhood, it'll pop back up again when you refresh by swiping down from the top of the screen."/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/noteFormatText"
         android:text="Key Terms"
         android:textSize="18sp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/noteFormatText"
         android:text="SSID: This is the name of the overall network, the same as the name you see when you choose a Wi-Fi network through your default OS."/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/noteFormatText"
         android:text="BSSID: This is a name you don't see, the unique name of the physical access point connection you're using. Unlike your OS, this app lets you choose between these to optimize performance."/>
 
 </LinearLayout>

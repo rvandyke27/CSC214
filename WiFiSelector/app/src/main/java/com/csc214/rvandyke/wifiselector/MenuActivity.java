@@ -80,11 +80,18 @@ public abstract class MenuActivity extends AppCompatActivity implements WifiErro
                 startActivity(currentConnection);
                 handled = true;
                 break;
-            case R.id.menu_item_advanced_requirements:
-                Log.d(TAG, "Advanced Requirements activity launched from Menu");
+            case R.id.menu_item_map:
+                Log.d(TAG, "Map activity launched from Menu");
                 Intent advancedReq = new Intent(this, MyMapActivity.class);
                 advancedReq.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(advancedReq);
+                handled = true;
+                break;
+            case R.id.menu_item_dog:
+                Log.d(TAG, "Dog activity launched from Menu");
+                Intent dog = new Intent(this, DogActivity.class);
+                dog.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(dog);
                 handled = true;
                 break;
             default:

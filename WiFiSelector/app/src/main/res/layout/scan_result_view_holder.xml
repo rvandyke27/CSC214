@@ -14,18 +14,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="BSSID"
-            android:textAlignment="center"
-            android:textSize="24sp"
+            android:text="@string/bssid"
+            style="@style/headerText"
             android:id="@+id/text_view_bssid"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="-17"
-            android:textAlignment="center"
-            android:id="@+id/text_view_signal_strength"
-            android:textSize="24sp"/>
+            android:text="@string/_17"
+            style="@style/headerText"
+            android:id="@+id/text_view_signal_strength" />
 
     </LinearLayout>
 
@@ -40,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/button_connect"
-            android:text="Connect"
+            android:text="@string/connect"
             style="?android:attr/buttonBarButtonStyle"/>
 
         <Button
@@ -48,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:id="@+id/button_add_to_favorites"
-            android:text="Add to Favorites"
+            android:text="@string/add_to_favorites"
             style="?android:attr/buttonBarButtonStyle"/>
 
     </LinearLayout>

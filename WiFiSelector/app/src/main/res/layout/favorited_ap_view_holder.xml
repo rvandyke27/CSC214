@@ -21,16 +21,14 @@
             android:layout_weight="1"
             android:text="Nickname"
             android:id="@+id/text_view_nickname"
-            android:textAlignment="center"
-            android:textSize="24sp"/>
+            style="@style/headerText"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="-17"
             android:id="@+id/text_view_signal_strength"
-            android:textAlignment="center"
-            android:textSize="24sp"/>
+            style="@style/headerText"/>
 
     </LinearLayout>
 
@@ -42,7 +40,8 @@
         android:id="@+id/text_view_notes"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="5dp"
+        style="@style/noteFormatText"/>
 
     <LinearLayout
         android:layout_width="match_parent"

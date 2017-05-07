@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-public class FavoriteAPListActivity extends MenuActivity {
+public class FavoriteAPListActivity extends MenuActivity implements FavoriteDialog.DialogDismissedListener{
     private static final String TAG = "FavAPListActivity";
 
     private FavoriteAPListFragment mFragment;
@@ -24,6 +24,11 @@ public class FavoriteAPListActivity extends MenuActivity {
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.favorite_ap_frame, mFragment, null).commit();
     } //onCreate()
+
+    @Override
+    public void onChildDismissed(){
+        mFragment.dialogDismissed();
+    }
 
     @Override
     public void onDestroy(){

@@ -16,6 +16,10 @@
         android:title="Test Active Connection" />
 
     <item
-        android:id="@+id/menu_item_advanced_requirements"
-        android:title="Advanced Requirements" />
+        android:id="@+id/menu_item_map"
+        android:title="Pointless Map" />
+
+    <item
+        android:id="@+id/menu_item_dog"
+        android:title="Pointless Dog" />
 </menu>

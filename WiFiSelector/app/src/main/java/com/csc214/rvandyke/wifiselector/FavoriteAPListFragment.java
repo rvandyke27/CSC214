@@ -29,7 +29,7 @@ CSC 214 Project 3
 TA: Julian Weiss
  */
 
-public class FavoriteAPListFragment extends Fragment {
+public class FavoriteAPListFragment extends Fragment{
     private static final String TAG = "FavAPListFragment";
 
     private static final String ARG_BSSID = "bssid";
@@ -90,14 +90,9 @@ public class FavoriteAPListFragment extends Fragment {
         }
     } //updateUI()
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        if(requestCode == 0){
-            if(resultCode == Activity.RESULT_OK){
-                mAdapter.update(mFavoriteAPList.getFavoritedAPs());
-                mAdapter.notifyDataSetChanged();
-            }
-        }
+    public void dialogDismissed(){
+        mAdapter.update(mFavoriteAPList.getFavoritedAPs());
+        mAdapter.notifyDataSetChanged();
     }
 
     private class APAdapter extends RecyclerView.Adapter<APViewHolder>{
@@ -153,7 +148,6 @@ public class FavoriteAPListFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     FavoriteDialog addToFavorites = FavoriteDialog.newInstance(mAP);
-                    addToFavorites.setTargetFragment(FavoriteAPListFragment.this, 0);
                     addToFavorites.show(getFragmentManager(), "favorite");
                 }
             });

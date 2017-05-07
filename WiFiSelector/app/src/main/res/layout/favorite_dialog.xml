@@ -8,8 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Edit Favorited Access Point"
-        android:textSize="24sp"
-        android:textAlignment="center"/>
+        style="@style/headerText"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -79,6 +78,7 @@
         android:id="@+id/edit_text_notes"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        style="@style/noteFormatText"
         android:hint="Location, time of day, etc..."/>
 
     <LinearLayout
@@ -102,8 +102,7 @@
             android:layout_weight="1"
             android:text="Unfavorite"
             android:id="@+id/button_remove_from_favorites"
-            style="?android:attr/buttonBarButtonStyle"
-            android:textSize="14sp"/>
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:layout_width="wrap_content"

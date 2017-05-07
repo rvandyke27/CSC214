@@ -32,6 +32,8 @@ TA: Julian Weiss
 public class CurrentConnectionInfoActivity extends MenuActivity {
     private static final String TAG = "CCInfoActivity";
 
+    private static String KEY_SPEED_TEST_RESULT = "speed_test";
+
     private TextView mSSIDView;
     private TextView mBSSIDView;
     private ImageView mFavoritedStar;
@@ -57,6 +59,9 @@ public class CurrentConnectionInfoActivity extends MenuActivity {
 
         mSSIDView.setText(mSSID);
         mBSSIDView.setText(mBSSID);
+        if(savedInstanceState!=null){
+            mSpeedTestResults.setText(savedInstanceState.getCharSequence(KEY_SPEED_TEST_RESULT));
+        }
 
         if(FavoriteAPList.get(this).contains(mBSSID)){
             mFavoritedStar.setImageResource(R.drawable.ic_favorited);
@@ -76,6 +81,12 @@ public class CurrentConnectionInfoActivity extends MenuActivity {
         });
 
     } //onCreate()
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putCharSequence(KEY_SPEED_TEST_RESULT, mSpeedTestResults.getText());
+    }
 
     private class SpeedTest extends AsyncTask<String, Void, Bitmap> {
         private long time;

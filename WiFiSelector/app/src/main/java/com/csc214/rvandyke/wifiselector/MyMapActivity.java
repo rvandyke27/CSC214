@@ -21,7 +21,7 @@ public class MyMapActivity extends MenuActivity {
         setContentView(R.layout.activity_my_map);
 
         ActionBar ab = getSupportActionBar();
-        ab.setSubtitle("Project Advanced Requirements");
+        ab.setSubtitle("Map Advanced Requirement");
 
         FragmentManager manager = getSupportFragmentManager();
         mFrag = (MyMapFragment) manager.findFragmentById(R.id.advanced_requirements_frame);

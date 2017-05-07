@@ -41,13 +41,11 @@ CSC 214 Project 3
 TA: Julian Weiss
  */
 
-public class ScanResultFragment extends Fragment{
+public class ScanResultFragment extends Fragment {
     private static final String TAG = "ScanResultFragment";
 
     private static String ARG_SSID = "ssid";
     private static String ARG_BSSID = "bssid";
-
-    public static final int DIALOG_FRAGMENT = 1;
 
     private RecyclerView mRecyclerView;
     protected String mSSID;
@@ -189,14 +187,10 @@ public class ScanResultFragment extends Fragment{
 
     } //connectTo()
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        if(requestCode == 0){
-            if(resultCode == Activity.RESULT_OK){
-                mScanFilter.updateScan();
-                mSwipeRefreshLayout.setRefreshing(true);
-            }
-        }
+
+    public void dialogDismissed(){
+        mScanFilter.updateScan();
+        mSwipeRefreshLayout.setRefreshing(true);
     } //onActivityResult()
 
 
@@ -305,7 +299,6 @@ public class ScanResultFragment extends Fragment{
                 @Override
                 public void onClick(View v) {
                     FavoriteDialog addToFavorites = FavoriteDialog.newInstance(mAccessPoint);
-                    addToFavorites.setTargetFragment(ScanResultFragment.this, 0);
                     addToFavorites.show(getFragmentManager(), "favorite");
                 }
             });
@@ -358,7 +351,6 @@ public class ScanResultFragment extends Fragment{
                 @Override
                 public void onClick(View v){
                     FavoriteDialog addToFavorites = FavoriteDialog.newInstance(mScanResult);
-                    addToFavorites.setTargetFragment(ScanResultFragment.this, 0);
                     addToFavorites.show(getFragmentManager(), "favorite");
                 }
             });

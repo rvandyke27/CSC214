@@ -35,10 +35,26 @@ public class FavoriteDialog extends DialogFragment {
     private static String KEY_NOTES = "NOTES";
 
     private FavoriteAPList mFavoriteAPList;
+    private DialogDismissedListener mCallback;
+
+    public interface DialogDismissedListener{
+        public void onChildDismissed();
+    }
 
     public FavoriteDialog(){
         //required empty public constructor
     } //favoriteDialog()
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        try{
+            mCallback = (DialogDismissedListener)getActivity();
+        }
+        catch(ClassCastException e){
+            Log.d(TAG, "parent activity must implement DialogDismissedListener");
+        }
+    }
 
     public static FavoriteDialog newInstance(AccessPoint ap){
         FavoriteDialog dialog = new FavoriteDialog();
@@ -119,7 +135,7 @@ public class FavoriteDialog extends DialogFragment {
     } //onCreateDialog()
 
     public void done(){
-        getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, null);
+        mCallback.onChildDismissed();
         dismiss();
     } //onDismiss()
 

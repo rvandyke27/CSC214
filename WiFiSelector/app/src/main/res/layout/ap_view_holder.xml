@@ -22,8 +22,7 @@
             android:layout_weight="1"
             android:text="Nickname"
             android:id="@+id/text_view_nickname"
-            android:textAlignment="center"
-            android:textSize="26sp"/>
+            style="@style/headerText"/>
 
     </LinearLayout>
 
@@ -34,7 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textAlignment="center"
             android:text="SSID:"/>
         <TextView
@@ -44,7 +43,7 @@
             android:text="UR_CONNECTED"
             android:id="@+id/text_view_ssid"
             android:textAlignment="center"
-            android:textSize="20sp"/>
+            android:textSize="18sp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -54,7 +53,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textAlignment="center"
             android:text="BSSID:"/>
         <TextView
@@ -64,12 +63,15 @@
             android:text="E3:812:ECE:232"
             android:id="@+id/text_view_bssid"
             android:textAlignment="center"
-            android:textSize="20sp"/>
+            android:textSize="18sp"/>
     </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
         android:text="Notes about where you were when you last used this network, how busy it was, time of day, etc"
         android:id="@+id/text_view_notes"/>
 

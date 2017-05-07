@@ -35,12 +35,9 @@ TA: Julian Weiss
  */
 
 public class MyMapFragment extends SupportMapFragment {
-    private static final String TAG  = "AdvancedReqFrag";
+    private static final String TAG  = "MyMapFragment";
 
     public static final float ZOOM = 16.0f;
-
-    private MediaPlayer mPlayer;
-    private AssetManager mAssets;
 
     private GoogleApiClient mClient;
     private GoogleMap mMap;
@@ -56,34 +53,7 @@ public class MyMapFragment extends SupportMapFragment {
     @Override
     public void onCreate(Bundle state){
         super.onCreate(state);
-        setRetainInstance(true);
 
-        mPlayer = new MediaPlayer();
-
-        mAssets = getActivity().getAssets();
-
-        mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-
-        mPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                Log.d(TAG, "Media is prepared, starting audio");
-                mPlayer.start();
-                mPlayer.setLooping(true);
-            }
-        });
-
-        try {
-            AssetFileDescriptor afd = mAssets.openFd("audio/mus_dogsong.ogg");
-            mPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
-            afd.close();
-            mPlayer.prepare();
-        }
-        catch(IOException e) {
-            Log.e(TAG, "file not found");
-        }
-
-        //map portion
         mClient = new GoogleApiClient.Builder(getActivity())
                 .addApi(LocationServices.API)
                 .addConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
@@ -154,8 +124,6 @@ public class MyMapFragment extends SupportMapFragment {
     @Override
     public void onDestroy(){
         super.onDestroy();
-        mPlayer.release();
-        mPlayer = null;
         Log.d(TAG, "onDestroy called");
     } //onDestroy()
 
