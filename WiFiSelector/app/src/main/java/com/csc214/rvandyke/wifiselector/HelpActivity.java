@@ -6,6 +6,7 @@ import android.media.Image;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 
 /*
@@ -21,6 +22,7 @@ public class HelpActivity extends MenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+        Log.d("Help Activity", "onCreate() called");
 
         ImageView ap = (ImageView)findViewById(R.id.image_view_ap);
         Resources res = getResources();

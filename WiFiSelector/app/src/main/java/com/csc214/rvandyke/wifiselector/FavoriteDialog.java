@@ -1,11 +1,8 @@
 package com.csc214.rvandyke.wifiselector;
 
-import android.app.Activity;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,7 +14,6 @@ import android.widget.Toast;
 
 import com.csc214.rvandyke.wifiselector.model.AccessPoint;
 import com.csc214.rvandyke.wifiselector.model.FavoriteAPList;
-
 
 /*
 Rebecca Van Dyke
@@ -39,7 +35,7 @@ public class FavoriteDialog extends DialogFragment {
 
     public interface DialogDismissedListener{
         public void onChildDismissed();
-    }
+    } //end interface DialogDismissedListener
 
     public FavoriteDialog(){
         //required empty public constructor
@@ -48,13 +44,14 @@ public class FavoriteDialog extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate() called");
         try{
             mCallback = (DialogDismissedListener)getActivity();
         }
         catch(ClassCastException e){
             Log.d(TAG, "parent activity must implement DialogDismissedListener");
         }
-    }
+    } //onCreate()
 
     public static FavoriteDialog newInstance(AccessPoint ap){
         FavoriteDialog dialog = new FavoriteDialog();

@@ -45,6 +45,7 @@ public class CurrentConnectionInfoActivity extends MenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_connection_info);
+        Log.d(TAG, "onCreate() called");
 
         ActionBar ab = getSupportActionBar();
         ab.setSubtitle("Current Connection");
@@ -83,10 +84,16 @@ public class CurrentConnectionInfoActivity extends MenuActivity {
     } //onCreate()
 
     @Override
+    public void onDestroy(){
+        super.onDestroy();
+        Log.d(TAG, "onDestroy() called");
+    } //onDestroy
+
+    @Override
     public void onSaveInstanceState(Bundle savedInstanceState){
         super.onSaveInstanceState(savedInstanceState);
         savedInstanceState.putCharSequence(KEY_SPEED_TEST_RESULT, mSpeedTestResults.getText());
-    }
+    } //onSaveInstanceState()
 
     private class SpeedTest extends AsyncTask<String, Void, Bitmap> {
         private long time;
@@ -119,4 +126,5 @@ public class CurrentConnectionInfoActivity extends MenuActivity {
             mSpeedTestResults.setText(info);
         } //onPostExecute()
     } //end class FetchImage
+
 } //end class CurrentConnectionInfoActivity

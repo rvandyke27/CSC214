@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="Click a button to add a dog sound to the beautiful melody"
+        android:text="@string/click_a_button_to_add_a_dog_sound_to_the_beautiful_melody"
         style="@style/headerText"/>
 
     <Button
@@ -19,41 +19,41 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/button_bark1"
-        android:text="Bark 1"/>
+        android:text="@string/bark_1"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/button_bark2"
-        android:text="Bark 2"/>
+        android:text="@string/bark_2"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/button_bark3"
-        android:text="Bark 3"/>
+        android:text="@string/bark_3"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/button_bark4"
-        android:text="Bark 4"/>
+        android:text="@string/bark_4"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/button_bark5"
-        android:text="Bark 5"/>
+        android:text="@string/bark_5"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:id="@+id/button_bark6"
-        android:text="Bark 6"/>
+        android:text="@string/bark_6"/>
 
 </LinearLayout>

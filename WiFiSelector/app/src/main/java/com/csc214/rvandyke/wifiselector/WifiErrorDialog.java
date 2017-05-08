@@ -71,6 +71,6 @@ public class WifiErrorDialog extends DialogFragment {
                 dismiss();
             }
         }
-    }
+    } //onActivityResult()
 
 } //end class WifiErrorDialog

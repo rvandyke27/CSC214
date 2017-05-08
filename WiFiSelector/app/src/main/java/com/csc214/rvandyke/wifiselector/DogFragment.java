@@ -50,6 +50,7 @@ public class DogFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
+        Log.d(TAG, "onCreate() called");
 
         mPlayer = new MediaPlayer();
 
@@ -123,7 +124,7 @@ public class DogFragment extends Fragment {
             mPlayer.seekTo(mTrackPosition);
             mPlayer.start();
         }
-    }
+    } //onResume()
 
 
 } //end class DogFragment

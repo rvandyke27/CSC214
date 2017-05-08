@@ -19,14 +19,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Nickname"
+            android:text="@string/nickname"
             android:id="@+id/text_view_nickname"
             style="@style/headerText"/>
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="-17"
             android:id="@+id/text_view_signal_strength"
             style="@style/headerText"/>
 
@@ -36,7 +35,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Notes about where you were when you last used this network, how busy it was, time of day, etc"
+        android:text="@string/notes_about_where_you_were_when_you_last_used_this_network_how_busy_it_was_time_of_day_etc"
         android:id="@+id/text_view_notes"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
@@ -53,7 +52,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Connect"
+            android:text="@string/connect"
             style="?android:attr/buttonBarButtonStyle"
             android:id="@+id/button_connect"/>
 
@@ -61,7 +60,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Edit"
+            android:text="@string/edit"
             style="?android:attr/buttonBarButtonStyle"
             android:id="@+id/button_edit_entry"/>
 

@@ -6,6 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+/*
+Rebecca Van Dyke
+rvandyke@u.rochester.edu
+CSC 214 Project 3
+TA: Julian Weiss
+ */
+
 public class FavoriteAPListActivity extends MenuActivity implements FavoriteDialog.DialogDismissedListener{
     private static final String TAG = "FavAPListActivity";
 
@@ -20,7 +27,7 @@ public class FavoriteAPListActivity extends MenuActivity implements FavoriteDial
         ActionBar ab = getSupportActionBar();
         ab.setSubtitle("Favorited Access Points");
 
-        mFragment = FavoriteAPListFragment.newInstance(mSSID, mBSSID);
+        mFragment = FavoriteAPListFragment.newInstance();
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.favorite_ap_frame, mFragment, null).commit();
     } //onCreate()
@@ -28,11 +35,11 @@ public class FavoriteAPListActivity extends MenuActivity implements FavoriteDial
     @Override
     public void onChildDismissed(){
         mFragment.dialogDismissed();
-    }
+    } //onChildDismissed()
 
     @Override
     public void onDestroy(){
         super.onDestroy();
         Log.d(TAG, "onDestroy() called");
-    }
+    } //onDestroy()
 } //end class FavoriteAPListActivity

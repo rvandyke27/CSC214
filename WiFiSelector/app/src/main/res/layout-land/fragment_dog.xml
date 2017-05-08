@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="Click a button to add a dog sound to the beautiful melody"
+        android:text="@string/click_a_button_to_add_a_dog_sound_to_the_beautiful_melody"
         style="@style/headerText"/>
 
     <RelativeLayout
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:id="@+id/button_bark5"
-            android:text="Bark 5"/>
+            android:text="@string/bark_5"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -59,7 +59,7 @@
             android:layout_toLeftOf="@id/button_bark5"
             android:layout_marginRight="20dp"
             android:id="@+id/button_bark4"
-            android:text="Bark 4"/>
+            android:text="@string/bark_4"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
         android:layout_toRightOf="@id/button_bark5"
         android:layout_marginLeft="20dp"
         android:id="@+id/button_bark6"
-        android:text="Bark 6"/>
+        android:text="@string/bark_6"/>
     </RelativeLayout>
 
 </LinearLayout>

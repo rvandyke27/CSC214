@@ -9,14 +9,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Uh Oh!"
+        android:text="@string/uh_oh"
         android:textSize="30sp"
         android:textAlignment="center"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="For this application to work properly, you must have Wi-Fi enabled and connected!"
+        android:text="@string/for_this_application_to_work_properly_you_must_have_wi_fi_enabled_and_connected"
         android:textAlignment="center"
         android:layout_margin="10dp"
         android:textSize="18sp"/>
@@ -24,7 +24,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Configure Wi-Fi"
+        android:text="@string/configure_wi_fi"
         android:layout_gravity="center"
         android:id="@+id/button_configure_wifi"
         android:layout_marginBottom="10dp"/>

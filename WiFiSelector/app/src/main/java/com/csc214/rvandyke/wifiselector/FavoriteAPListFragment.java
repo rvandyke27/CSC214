@@ -1,13 +1,11 @@
 package com.csc214.rvandyke.wifiselector;
 
 
-import android.app.Activity;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +15,6 @@ import android.widget.TextView;
 
 import com.csc214.rvandyke.wifiselector.model.AccessPoint;
 import com.csc214.rvandyke.wifiselector.model.FavoriteAPList;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -38,21 +34,15 @@ public class FavoriteAPListFragment extends Fragment{
     private RecyclerView mRecyclerView;
     private FavoriteAPList mFavoriteAPList;
     private APAdapter mAdapter;
-    private String mSSID;
-    private String mBSSID;
 
 
     public FavoriteAPListFragment() {
         // Required empty public constructor
     } //FavoriteAPListFragment()
 
-    public static FavoriteAPListFragment newInstance(String ssid, String bssid){
-        Bundle args = new Bundle();
-        args.putString(ARG_BSSID, bssid);
-        args.putString(ARG_SSID, ssid);
+    public static FavoriteAPListFragment newInstance(){
         FavoriteAPListFragment fragment = new FavoriteAPListFragment();
-        fragment.setArguments(args);
-        Log.d(TAG, "newInstance() called with ssid=" + ssid + ", bssid=" + bssid);
+        Log.d(TAG, "newInstance() called");
         return fragment;
     } //newInstance()
 
@@ -65,9 +55,6 @@ public class FavoriteAPListFragment extends Fragment{
         mRecyclerView = (RecyclerView)view.findViewById(R.id.favorite_recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        Bundle args = getArguments();
-        mSSID = args.getString(ARG_SSID);
-        mBSSID = args.getString(ARG_BSSID);
         updateUI();
 
         return view;
@@ -76,6 +63,7 @@ public class FavoriteAPListFragment extends Fragment{
     @Override
     public void onResume(){
         super.onResume();
+        Log.d(TAG, "onResume() called");
         updateUI();
     } //onResume()
 
@@ -93,7 +81,7 @@ public class FavoriteAPListFragment extends Fragment{
     public void dialogDismissed(){
         mAdapter.update(mFavoriteAPList.getFavoritedAPs());
         mAdapter.notifyDataSetChanged();
-    }
+    } //dialogDismissed()
 
     private class APAdapter extends RecyclerView.Adapter<APViewHolder>{
         private static final String TAG = "APAdapter";

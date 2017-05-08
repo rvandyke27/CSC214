@@ -119,7 +119,6 @@ public class ScanResultFragment extends Fragment {
                 }
             }
         }
-
         return view;
     } //onCreateview()
 
@@ -154,6 +153,7 @@ public class ScanResultFragment extends Fragment {
         }
     } //onStop()
 
+    //NOTE: connectTo will never be called, also won't do anything unless bottom is uncommented
     public boolean connectTo(String bssid){
         WifiConfiguration newWc = new WifiConfiguration();
         //mBSSID = bssid;
@@ -336,10 +336,10 @@ public class ScanResultFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     if(connectTo(mScanResult.getBSSID())){
-                        Toast.makeText(getContext(), "Connection updated", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), R.string.connection_updated, Toast.LENGTH_LONG).show();
                     }
                     else{
-                        Toast.makeText(getContext(), "Connection failed", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), R.string.connection_failed, Toast.LENGTH_LONG).show();
                     }
                     //mScanFilter.updateScan();
                     //mSwipeRefreshLayout.setRefreshing(true);
@@ -358,9 +358,9 @@ public class ScanResultFragment extends Fragment {
 
         public void bind(AccessPoint sr) {
             mScanResult = sr;
-            Log.d(TAG, "binding " + sr.getBSSID() + ", RSSI " + sr.getSignalLevel());
+            Log.d(TAG, getString(R.string.binding) + sr.getBSSID() + getString(R.string.rssi) + sr.getSignalLevel());
             mBSSID.setText(sr.getBSSID());
-            String ss = "Signal Strength: " + WifiManager.calculateSignalLevel(sr.getSignalLevel(), 10);
+            String ss = getString(R.string.signal_strength) + WifiManager.calculateSignalLevel(sr.getSignalLevel(), 10);
             mRSSI.setText(ss);
         } //bind()
 

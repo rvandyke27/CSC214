@@ -7,13 +7,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Edit Favorited Access Point"
+        android:text="@string/edit_favorited_access_point"
         style="@style/headerText"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Nickname...   "
+        android:hint="@string/nickname_"
         android:layout_gravity="center"
         android:id="@+id/edit_text_nickname"/>
 
@@ -26,7 +26,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="SSID:"
+            android:text="@string/ssid"
             android:textSize="18sp"
             android:textAlignment="center"/>
 
@@ -34,7 +34,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="UR_CONNECTED"
+            android:text="@string/ur_connected"
             android:id="@+id/text_view_ssid"
             android:textSize="18sp"
             />
@@ -50,7 +50,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="BSSID:"
+            android:text="@string/bssid"
             android:textSize="18sp"
             android:textAlignment="center"/>
 
@@ -58,7 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="RRL-G-1-36021"
+            android:text="@string/rrl_g_1_36021"
             android:id="@+id/text_view_bssid"
             android:textSize="18sp"
             />
@@ -69,7 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="        Notes:"
+        android:text="@string/notes__"
         android:textSize="18sp"/>
 
     <EditText
@@ -79,7 +79,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         style="@style/noteFormatText"
-        android:hint="Location, time of day, etc..."/>
+        android:hint="@string/location_time_of_day_etc"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -94,13 +94,13 @@
             android:layout_weight="1"
             style="?android:attr/buttonBarButtonStyle"
             android:id="@+id/button_cancel"
-            android:text="Cancel"/>
+            android:text="@string/cancel"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Unfavorite"
+            android:text="@string/unfavorite"
             android:id="@+id/button_remove_from_favorites"
             style="?android:attr/buttonBarButtonStyle" />
 
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             style="?android:attr/buttonBarButtonStyle"
-            android:text="OK"
+            android:text="@string/ok"
             android:id="@+id/button_ok"/>
 
     </LinearLayout>
