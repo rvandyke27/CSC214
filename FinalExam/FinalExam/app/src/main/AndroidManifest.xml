@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="mobappdev.demo.finalexam">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".problem1.ProblemOneFirstActivity">
+        </activity>
+        <activity android:name=".problem1.ProblemOneSecondActivity">
+        </activity>
+        <activity android:name=".problem2.ProblemTwoActivity">
+        </activity>
+        <activity android:name=".problem3.AActivity">
+        </activity>
+        <activity android:name=".problem3.BActivity">
+        </activity>
+        <activity android:name=".problem4.ImageDownloaderActivity">
+        </activity>
+    </application>
+
+</manifest>
